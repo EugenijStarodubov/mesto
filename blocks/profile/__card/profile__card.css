@@ -1,0 +1,17 @@
+.profile__card {
+	box-sizing: border-box;
+	width: 100%;
+	display: grid;
+	grid-template-areas:
+		"image image"
+		"title edit-button"
+		"subtitle subtitle"
+		"add-button add-button";
+	grid-template-columns: 80% 1fr;
+	grid-template-rows: min-content;
+	column-gap: 10px;
+	grid-auto-columns: 0;
+	justify-items: center;
+	align-items: center;
+	margin-bottom: 36px;
+}

@@ -1,0 +1,4 @@
+.profile__subtitle {
+	grid-area: subtitle;
+	margin-bottom: 33px;
+}

@@ -1,0 +1,5 @@
+.profile__title {
+	grid-area: title;
+	justify-self: end;
+	margin-bottom: 8px;
+}

@@ -1,0 +1,9 @@
+.profile__button-wrapper {
+	margin: 0;
+	padding: 0;
+	grid-area: add-button;
+	outline: 1px #fff solid;
+	width: 100%;
+	max-width: 282px;
+	min-height: 48px;
+}

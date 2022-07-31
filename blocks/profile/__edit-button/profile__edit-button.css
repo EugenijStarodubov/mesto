@@ -1,0 +1,9 @@
+.profile__edit-button {
+	grid-area: edit-button;
+	justify-self: start;
+	margin: 0 0 8px 0;
+	padding: 0;
+	min-width: 18px;
+	min-height: 18px;
+	background-image: url("../../../images/Edit-Button.svg");
+}
