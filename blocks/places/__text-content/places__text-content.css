@@ -1,7 +1,9 @@
 .places__text-content {
 	box-sizing: border-box;
 	margin: 0 auto;
-	width: 87.23%;
+	padding: 14px 0 22px 0;
+	width: 100%;
+	max-width: 86%;
 	min-height: 79px;
 	display: flex;
 	justify-content: space-between;

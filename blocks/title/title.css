@@ -8,3 +8,10 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
+
+@media screen and (min-width: 1280px) {
+	.title {
+		font-size: 42px;
+		line-height: 48px;
+	}
+}

@@ -1,9 +1,40 @@
 .page__container {
 	box-sizing: border-box;
 	margin: 0 auto;
+	padding: 0 19px;
 	width: 100%;
 	font-family: "Inter", "Arial", sans-serif;
 	font-style: normal;
 	text-align: center;
 	color: #fff;
+}
+
+@media screen and (min-width: 425px) {
+	.page__container {
+		padding: 0 24px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.page__container {
+		padding: 0 48px;
+	}
+}
+
+@media screen and (min-width: 928px) {
+	.page__container {
+		padding: 0 80px;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.page__container {
+		padding: 0 130px;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.page__container {
+		padding: 0 200px;
+	}
 }

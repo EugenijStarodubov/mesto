@@ -1,6 +1,17 @@
 .places__item {
+	padding: 0;
 	background-color: #fff;
 	border-radius: 10px;
-	max-height: 361px;
-	width: 88.13%;
+	max-height: 362px;
+	width: 100%;
+	min-width: 282px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+@media screen and (min-width: 928px) {
+	.places__item {
+		min-width: 200px;
+	}
 }

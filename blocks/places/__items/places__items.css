@@ -1,12 +1,26 @@
 .places__items {
 	margin: 0 auto;
 	width: 100%;
+	min-width: 281px;
 	list-style: none;
 	padding: 0;
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: repeat(autofit, 360px);
+	grid-template-rows: repeat(autofit, min-content);
 	row-gap: 20px;
 	justify-items: center;
 	align-items: start;
+}
+
+@media screen and (min-width: 768px) {
+	.places__items {
+		column-gap: 20px;
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media screen and (min-width: 928px) {
+	.places__items {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
 }

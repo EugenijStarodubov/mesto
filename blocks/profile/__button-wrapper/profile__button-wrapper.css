@@ -1,9 +1,17 @@
 .profile__button-wrapper {
 	margin: 0;
 	padding: 0;
-	grid-area: add-button;
+	grid-area: button;
 	outline: 1px #fff solid;
 	width: 100%;
-	max-width: 282px;
-	min-height: 48px;
+	max-width: 281px;
+	max-height: 48px;
+}
+
+@media screen and (min-width: 1280px) {
+	.profile__button-wrapper {
+		max-width: 150px;
+		max-height: 48px;
+		justify-self: end;
+	}
 }

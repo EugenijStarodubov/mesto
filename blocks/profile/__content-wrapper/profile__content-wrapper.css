@@ -1,0 +1,23 @@
+.profile__content-wrapper {
+	grid-area: content;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 36px;
+	margin-right: 38px;
+}
+
+@media screen and (min-width: 400px) {
+	.profile__content-wrapper {
+		margin: 0;
+		justify-content: flex-start;
+		justify-self: start;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.profile__content-wrapper {
+		justify-content: flex-start;
+		justify-self: start;
+	}
+}

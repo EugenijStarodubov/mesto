@@ -1,9 +1,18 @@
 .profile__edit-button {
-	grid-area: edit-button;
 	justify-self: start;
-	margin: 0 0 8px 0;
+	margin: 0;
 	padding: 0;
+	padding-top: 40px;
 	min-width: 18px;
 	min-height: 18px;
 	background-image: url("../../../images/Edit-Button.svg");
+	align-self: flex-start;
+}
+
+@media screen and (min-width: 1280px) {
+	.profile__edit-button {
+		padding-top: 50px;
+		min-width: 24px;
+		min-height: 24px;
+	}
 }
