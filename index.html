@@ -18,31 +18,6 @@
 				/>
 			</header>
 			<main class="content page__content">
-				<section class="content__pop-up">
-					<a href="#" class="content__close-pop-up-button">
-						<img
-							src="./images/profile/close-icon.svg"
-							alt=""
-							class="content__close-pop-up-image"
-						/>
-					</a>
-					<div class="content__pop-up-wrapper">
-						<h2 class="title content__pop-up-title">Редактировать профиль</h2>
-						<form action="" class="content__form">
-							<input
-								type="text"
-								placeholder="Жак-Ив Кусто"
-								class="content__input content__input-name"
-							/>
-							<input
-								type="text"
-								placeholder="Исследователь океана"
-								class="content__input content__input-career"
-							/>
-							<button class="content__button">Сохранить</button>
-						</form>
-					</div>
-				</section>
 				<article class="profile page__profile">
 					<section class="profile__card">
 						<img
@@ -55,13 +30,12 @@
 								<h1 class="title profile__title">Жак-Ив Кусто</h1>
 								<p class="subtitle profile__subtitle">Исследователь океана</p>
 							</div>
-							<a href="" class="button edit-button profile__edit-button"></a>
+							<a class="button edit-button profile__edit-button"></a>
 						</div>
 						<div class="profile__button-wrapper">
-							<a href="" class="button profile__add-button"></a>
+							<a class="button profile__add-button"></a>
 						</div>
 					</section>
-
 					<section class="places profile__places">
 						<ul class="places__items">
 							<li class="places__item">
@@ -140,5 +114,31 @@
 				<p class="footer__copyright">&copy; 2022 Mesto Russia</p>
 			</footer>
 		</div>
+		<article class="popup page__popup">
+					<img
+					src="./images/profile/close-icon.svg"
+					alt=""
+					class="popup__close-button"
+				/>
+			</a>
+			<form action="" class="popup__container" method="POST">
+				<h2 class="title popup__title">Редактировать профиль</h2>
+				<input
+					type="text"
+					placeholder="Жак-Ив Кусто"
+					class="popup__input popup__input-name"
+					name="name"
+					autofocus
+				/>
+				<input
+					type="text"
+					placeholder="Исследователь океана"
+					class="popup__input popup__input-career"
+					name="career"
+				/>
+				<button type="button" class="popup__button">Сохранить</button>
+			</form>
+		</article>
+		<script src="./scripts/scripts.js"></script>
 	</body>
 </html>

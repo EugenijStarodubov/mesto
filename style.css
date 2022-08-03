@@ -1,23 +1,35 @@
-.content__pop-up {
+.page__popup {
+	display: none;
 	margin: 0 auto;
-	position: absolute;
-	top: -36px;
+	position: fixed;
+	top: 50%;
 	left: 50%;
-	width: 100%;
-	max-width: 432px;
-	display: flex;
+	width: 88.13%;
 	flex-direction: column;
-	transform: translate(-50%, 0);
+	transform: translate(-50%, -50%);
+	font-family: "Inter", "Arial", sans-serif;
+	font-style: normal;
+	text-align: center;
+	color: #fff;
 }
 
-@media screen and (min-width: 928px) {
-	.content__pop-up {
-		top: 0;
-		max-height: 330px;
+@media screen and (min-width: 428px) {
+	.page__popup {
+		max-width: 390px;
 	}
 }
 
-.content__close-pop-up-button {
+@media screen and (min-width: 928px) {
+	.popup__popup {
+		top: 60px;
+		max-width: 432px;
+		max-height: 330px;
+	}
+}
+.popup_opened {
+	display: flex;
+}
+.popup__close-button {
 	margin: 0;
 	padding: 0;
 	max-width: 20px;
@@ -27,7 +39,7 @@
 }
 
 @media screen and (min-width: 928px) {
-	.content__close-pop-up-button {
+	.popup__close-button {
 		position: relative;
 		right: -40px;
 		top: -8px;
@@ -37,27 +49,30 @@
 	}
 }
 
-.content__close-pop-up-image {
+.popup__close-image {
 	min-width: 20px;
 	min-height: 20px;
 }
 
 @media screen and (min-width: 928px) {
-	.content__close-pop-up-image {
+	.popup__close-image {
 		min-width: 32px;
 		min-height: 32px;
 		margin-bottom: 0;
 	}
 }
-.content__pop-up-wrapper {
+
+.popup__container {
 	background-color: #fff;
 	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 	border-radius: 10px;
 	opacity: 1;
 }
+.popup__wrapper {
+}
 .title {
 }
-.content__pop-up-title {
+.popup__title {
 	text-align: left;
 	font-weight: 900;
 	font-size: 18px;
@@ -70,7 +85,7 @@
 }
 
 @media screen and (min-width: 928px) {
-	.content__pop-up-title {
+	.popup__title {
 		padding-top: 34px;
 		padding-left: 36px;
 		margin-bottom: 50px;
@@ -80,10 +95,10 @@
 	}
 }
 
-.content__form {
+.popup__form {
 }
 
-.content__input {
+.popup__input {
 	box-sizing: border-box;
 	width: 84.4%;
 	padding-bottom: 8px;
@@ -95,25 +110,25 @@
 	vertical-align: top;
 }
 
-.content__input:not(:last-of-type) {
+.popup__input:not(:last-of-type) {
 	margin-bottom: 30px;
 }
 
 @media screen and (min-width: 928px) {
-	.content__input {
+	.popup__input {
 		padding-bottom: 8px;
 		vertical-align: top;
 	}
 }
 
-.content__input-name {
+.popup__input-name {
 }
 
-.content__input-career {
+.popup__input-career {
 	margin-bottom: 45px;
 }
 
-.content__button {
+.popup__button {
 	padding: 0;
 	margin: 0;
 	margin-bottom: 25px;
@@ -127,7 +142,7 @@
 }
 
 @media screen and (min-width: 928px) {
-	.content__button {
+	.popup__button {
 		margin-bottom: 37px;
 		min-height: 50px;
 		font-size: 18px;
