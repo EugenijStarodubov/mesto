@@ -1,11 +1,13 @@
 .button {
-	display: block;
-	margin: 0;
-	padding: 0;
 	box-sizing: border-box;
 	text-decoration: none;
 	color: #fff;
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
+	transition: opacity 0.9s ease-out 0s;
+}
+
+.button:hover {
+	opacity: 0.6;
 }
