@@ -1,0 +1,20 @@
+.page__popup {
+	display: none;
+	position: fixed;
+	/*top: 20% смотрится органичнее*/
+	top: 20%;
+	left: 50%;
+	width: 88.13%;
+	flex-direction: column;
+	transform: translate(-50%, -50%);
+	font-family: "Inter", "Arial", sans-serif;
+	font-style: normal;
+	text-align: center;
+	color: #fff;
+}
+
+@media screen and (min-width: 428px) {
+	.page__popup {
+		max-width: 390px;
+	}
+}
