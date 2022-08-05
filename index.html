@@ -114,29 +114,32 @@
 			</footer>
 		</div>
 		<article class="popup page__popup">
-			<img
-				src="./images/profile/close-icon.svg"
-				alt="Закрыть"
-				class="button popup__close-button"
-			/>
-			<form action="#" class="popup__container" method="POST">
-				<h2 class="title popup__title">Редактировать профиль</h2>
-				<input
-					type="text"
-					placeholder="Жак-Ив Кусто"
-					class="popup__input popup__input-name"
-					name="name"
-					autofocus
+			<div class="popup__container">
+				<img
+					src="./images/profile/close-icon.svg"
+					alt="Закрыть"
+					class="button popup__close-button"
 				/>
-				<input
-					type="text"
-					placeholder="Исследователь океана"
-					class="popup__input popup__input-job"
-					name="career"
-				/>
-				<button type="submit" class="button popup__button">Сохранить</button>
-			</form>
+				<form action="#" class="popup__form" method="POST">
+					<h2 class="title popup__title">Редактировать профиль</h2>
+					<input
+						type="text"
+						placeholder="Жак-Ив Кусто"
+						class="popup__input popup__input-name"
+						name="name"
+						autofocus
+					/>
+					<input
+						type="text"
+						placeholder="Исследователь океана"
+						class="popup__input popup__input-job"
+						name="career"
+					/>
+					<button type="submit" class="button popup__button">Сохранить</button>
+				</form>
+			</div>
 		</article>
+		<div class="page__overlay"></div>
 		<script src="./scripts/scripts.js"></script>
 	</body>
 </html>

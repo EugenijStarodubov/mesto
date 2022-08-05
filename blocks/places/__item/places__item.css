@@ -15,3 +15,9 @@
 		min-width: 200px;
 	}
 }
+
+@media screen and (min-width: 1024px) {
+	.places__item {
+		min-width: 282px;
+	}
+}

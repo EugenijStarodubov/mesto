@@ -1,16 +1,19 @@
 let container = document.querySelector(`.popup`);
 let editButton = document.querySelector(`.profile__edit-button`);
 let closeButton = container.querySelector(`.popup__close-button`);
+let overlayLayer = document.querySelector(`.page__overlay`);
 
 editButton.addEventListener(`click`, showPopup);
 closeButton.addEventListener(`click`, hidePopup);
 
 function showPopup() {
 	container.classList.add(`popup_opened`);
+	overlayLayer.classList.add(`page__overlay_opened`);
 }
 
 function hidePopup() {
 	container.classList.remove(`popup_opened`);
+	overlayLayer.classList.remove(`page__overlay_opened`);
 }
 
 let profileName = document.querySelector(`.profile__title`);
