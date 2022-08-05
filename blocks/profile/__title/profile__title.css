@@ -1,10 +1,9 @@
 .profile__title {
 	grid-area: title;
-	margin-bottom: 10px;
 }
 
 @media screen and (min-width: 1280px) {
 	.profile__title {
-		margin-bottom: 8px;
+		margin: 0;
 	}
 }

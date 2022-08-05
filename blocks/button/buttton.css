@@ -1,7 +1,7 @@
 .button {
 	box-sizing: border-box;
 	text-decoration: none;
-	color: #fff;
+	border: none;
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;

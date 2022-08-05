@@ -1,5 +1,5 @@
 .profile__title-wrapper {
-	margin-right: 10px;
+	grid-area: text-block;
 }
 
 @media screen and (min-width: 400px) {

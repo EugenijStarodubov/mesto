@@ -6,4 +6,5 @@
 	width: 100%;
 	background-image: url("../../../images/add.svg");
 	margin: 17px 0;
+	align-self: end;
 }

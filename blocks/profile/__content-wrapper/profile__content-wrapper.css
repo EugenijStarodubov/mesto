@@ -2,22 +2,22 @@
 	grid-area: content;
 	margin: 0 auto;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	margin-bottom: 36px;
+	display: grid;
+	grid-template-areas: ". text-block edit";
+	grid-template-columns: 1fr minmax(min-content, 189px) 1fr;
+	column-gap: 8px;
+	margin-bottom: 32px;
 }
 
 @media screen and (min-width: 400px) {
 	.profile__content-wrapper {
-		margin: 0;
-		justify-content: flex-start;
-		justify-self: start;
+		margin: 24px;
 	}
 }
 
 @media screen and (min-width: 1280px) {
 	.profile__content-wrapper {
-		justify-content: flex-start;
-		justify-self: start;
+		grid-template-areas: "text-block edit";
+		column-gap: 0;
 	}
 }

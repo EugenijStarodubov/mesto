@@ -1,5 +1,6 @@
 .places__item {
 	padding: 0;
+
 	background-color: #fff;
 	border-radius: 10px;
 	max-height: 362px;
@@ -8,6 +9,8 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+	align-self: center;
+	justify-self: center;
 }
 
 @media screen and (min-width: 928px) {
@@ -16,8 +19,8 @@
 	}
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
 	.places__item {
-		min-width: 282px;
+		max-width: 282px;
 	}
 }
