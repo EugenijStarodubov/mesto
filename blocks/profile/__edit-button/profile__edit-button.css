@@ -1,6 +1,5 @@
 .profile__edit-button {
 	grid-area: edit;
-	align-self: top;
 	margin: 0;
 	padding: 0;
 	background-color: #000;

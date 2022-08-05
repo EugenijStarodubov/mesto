@@ -4,6 +4,7 @@
 	grid-area: button;
 	outline: 1px #fff solid;
 	width: 100%;
+	background-color: #000;
 	max-width: 281px;
 	max-height: 48px;
 	border-radius: 2px;

@@ -34,9 +34,13 @@
 								type="button"
 							></button>
 						</div>
-						<div class="button profile__button-wrapper">
-							<a class="button profile__add-button"></a>
-						</div>
+						<button class="button profile__button-wrapper" type="button">
+							<img
+								src="./images/add.svg"
+								alt="Добавить"
+								class="profile__add-button"
+							/>
+						</button>
 					</section>
 					<section class="places profile__places">
 						<ul class="places__items">
@@ -118,11 +122,13 @@
 		</div>
 		<article class="popup page__popup">
 			<div class="popup__container">
-				<img
-					src="./images/profile/close-icon.svg"
-					alt="Закрыть"
-					class="button popup__close-button"
-				/>
+				<button class="button popup__close-button" type="button">
+					<img
+						src="./images/profile/close-icon.svg"
+						alt="Закрыть"
+						class="popup__close-image"
+					/>
+				</button>
 				<form action="#" class="popup__form" method="POST">
 					<h2 class="title popup__title">Редактировать профиль</h2>
 					<input
