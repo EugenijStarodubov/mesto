@@ -11,7 +11,7 @@
 @media screen and (min-width: 928px) {
 	.popup__close-button {
 		position: relative;
-		right: -36px;
+		right: -38px;
 		top: -8px;
 		max-width: 32px;
 		width: 100%;
