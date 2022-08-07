@@ -1,7 +1,7 @@
 .header__logo {
 	box-sizing: border-box;
 	padding: 0;
-	margin: 26px 0 30px 8px;
+	margin: 26px 0 30px 27px;
 }
 
 @media screen and (min-width: 1280px) {

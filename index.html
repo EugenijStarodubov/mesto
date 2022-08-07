@@ -21,26 +21,25 @@
 					<section class="profile__card">
 						<img
 							src="./images/profile/Avatar.jpg"
-							alt="Аватар"
+							alt="Путешественник"
 							class="avatar profile__avatar"
 						/>
 						<div class="profile__content-wrapper">
 							<div class="profile__title-wrapper">
-								<h1 class="title profile__title">Жак-Ив Кусто</h1>
+								<h1 class="profile__title">Жак-Ив Кусто</h1>
 								<p class="subtitle profile__subtitle">Исследователь океана</p>
 							</div>
 							<button
 								class="button edit-button profile__edit-button"
 								type="button"
+								aria-label="Редактировать данные пользователя"
 							></button>
 						</div>
-						<button class="button profile__button-wrapper" type="button">
-							<img
-								src="./images/add.svg"
-								alt="Добавить"
-								class="profile__add-button"
-							/>
-						</button>
+						<button
+							class="button profile__add-button"
+							type="button"
+							aria-label="Добавить пользователя"
+						></button>
 					</section>
 					<section class="places profile__places">
 						<ul class="places__items">
@@ -48,68 +47,92 @@
 								<div class="places__image-content">
 									<img
 										src="./images/profile/Kudikina-gora.jpg"
-										alt="Кудыкина гора"
+										alt="Змей Горыныч дер. Каменка Липецкая Область, парк 'Кудыкина гора'."
 										class="places__image"
 									/>
 								</div>
 								<div class="text-content places__text-content">
 									<h2 class="title places__title">Кудыкина гора</h2>
-									<a href="" class="places__like-button"></a>
+									<button
+										type="button"
+										class="places__like-button"
+										aria-label="Нравится"
+									></button>
 								</div>
 							</li>
 							<li class="places__item">
 								<img
 									src="./images/profile/Kaluga.jpg"
-									alt="Калужская область"
+									alt="река Угры ви лес, Калужская область."
 									class="places__image"
 								/>
 								<div class="text-content places__text-content">
 									<h2 class="title places__title">Калужская область</h2>
-									<a href="" class="places__like-button"></a>
+									<button
+										type="button"
+										class="places__like-button"
+										aria-label="Нравится"
+									></button>
 								</div>
 							</li>
 							<li class="places__item">
 								<img
 									src="./images/profile/Samara.jpg"
-									alt="Самара"
+									alt="река Волга вблизи г. Самара."
 									class="places__image"
 								/>
 								<div class="text-content places__text-content">
 									<h2 class="title places__title">Самара</h2>
-									<a href="" class="places__like-button"></a>
+									<button
+										type="button"
+										class="places__like-button"
+										aria-label="Нравится"
+									></button>
 								</div>
 							</li>
 							<li class="places__item">
 								<img
 									src="./images/profile/Serebrjannij-kamen.jpg"
-									alt="Гора Серебрянный камень"
+									alt="Гора Серебрянный камень, Урал."
 									class="places__image"
 								/>
 								<div class="text-content places__text-content">
 									<h2 class="title places__title">Гора Серебрянный камень</h2>
-									<a href="" class="places__like-button"></a>
+									<button
+										type="button"
+										class="places__like-button"
+										aria-label="Нравится"
+									></button>
 								</div>
 							</li>
 							<li class="places__item">
 								<img
 									src="./images/profile/Kemerovskaja-obl.jpg"
-									alt="Кемеровская область"
+									alt="Лес и горы, Кемеровская область."
 									class="places__image"
 								/>
 								<div class="text-content places__text-content">
 									<h2 class="title places__title">Кемеровская область</h2>
-									<a href="" class="places__like-button"></a>
+									<button
+										type="button"
+										class="places__like-button"
+										aria-label="Нравится"
+									></button>
 								</div>
 							</li>
 							<li class="places__item">
 								<img
 									src="./images/profile/Krasnoyarskij-kraj.jpg"
-									alt="Красноярский край"
+									alt="Енисей и тайга,Красноярский край."
 									class="places__image"
 								/>
 								<div class="text-content places__text-content">
 									<h2 class="title places__title">Красноярский край</h2>
-									<a href="" class="places__like-button"></a>
+									<button
+										type="button"
+										class="places__like-button"
+										aria-label="Нравится"
+									></button>
 								</div>
 							</li>
 						</ul>
@@ -122,13 +145,11 @@
 		</div>
 		<article class="popup page__popup">
 			<div class="popup__container">
-				<button class="button popup__close-button" type="button">
-					<img
-						src="./images/profile/close-icon.svg"
-						alt="Закрыть"
-						class="popup__close-image"
-					/>
-				</button>
+				<button
+					class="button popup__close-button"
+					type="button"
+					aria-label="Закрыть"
+				></button>
 				<form action="#" class="popup__form" method="POST">
 					<h2 class="title popup__title">Редактировать профиль</h2>
 					<input
@@ -144,7 +165,13 @@
 						class="popup__input popup__input-job"
 						name="career"
 					/>
-					<button type="submit" class="button popup__button">Сохранить</button>
+					<button
+						type="submit"
+						class="button popup__button"
+						aria-label="Сохранить"
+					>
+						Сохранить
+					</button>
 				</form>
 			</div>
 		</article>

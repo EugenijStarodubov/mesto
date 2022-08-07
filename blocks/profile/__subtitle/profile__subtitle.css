@@ -1,4 +1,18 @@
 .profile__subtitle {
+	padding: 0;
+	margin: 0;
 	grid-area: subtitle;
-	padding-top: 8px;
+	width: 100%;
+	justify-self: end;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	max-width: 254px;
+}
+
+@media screen and (min-width: 1280px) {
+	.profile__subtitle {
+		margin: 0;
+		max-width: 294px;
+	}
 }

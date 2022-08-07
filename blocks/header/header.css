@@ -1,8 +1,7 @@
 .header {
 	box-sizing: border-box;
-	width: 100%;
 	min-width: 281px;
-	height: auto;
+	width: 100%;
 	border-bottom: 1px solid #545454;
 	display: flex;
 	align-items: start;
