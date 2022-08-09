@@ -6,13 +6,13 @@ let profileJob = document.querySelector('.profile__subtitle');
 let nameInput = document.querySelector('.popup__input_field_name');
 let jobInput = document.querySelector('.popup__input_field_job');
 let popupForm = document.querySelector('.popup__form');
-let currentName = 'Жак-Ив Кусто';
-let currentJob = 'Исследователь океана';
+let currentName;
+let currentJob;
 
 function showPopup() {
   container.classList.add('popup_opened');
-  nameInput.value = currentName;
-  jobInput.value = currentJob;
+  currentName = nameInput.value;
+  currentJob = jobInput.value;
 }
 
 function hidePopup() {
@@ -23,8 +23,6 @@ function formSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  currentName = profileName.textContent;
-  currentJob = profileJob.textContent;
   hidePopup();
 }
 
