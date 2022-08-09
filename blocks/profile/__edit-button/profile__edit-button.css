@@ -2,13 +2,13 @@
 	grid-area: edit;
 	margin: 0;
 	padding: 0;
+	padding-top: 32px;
 	background-color: #000;
 	max-width: 18px;
 	width: 100%;
 	max-height: 18px;
 	height: 100%;
 	background-image: url("../../../images/Edit-Button.svg");
-	padding-top: 32px;
 }
 
 @media screen and (min-width: 1280px) {

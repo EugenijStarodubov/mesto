@@ -1,181 +1,180 @@
 <!DOCTYPE html>
 <html lang="ru">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./pages/index.css" />
-		<title>Место</title>
-	</head>
-	<body class="page">
-		<div class="page__container">
-			<header class="header page__header">
-				<img
-					src="./images/header/logo.svg"
-					alt="Логотип - Место (Россия)"
-					class="logo header__logo"
-				/>
-			</header>
-			<main class="content page__content">
-				<article class="profile">
-					<section class="profile__card">
-						<img
-							src="./images/profile/Avatar.jpg"
-							alt="Путешественник"
-							class="avatar profile__avatar"
-						/>
-						<div class="profile__content-wrapper">
-							<div class="profile__title-wrapper">
-								<h1 class="profile__title">Жак-Ив Кусто</h1>
-								<p class="subtitle profile__subtitle">Исследователь океана</p>
-							</div>
-							<button
-								class="button edit-button profile__edit-button"
-								type="button"
-								aria-label="Редактировать данные пользователя"
-							></button>
-						</div>
-						<button
-							class="button profile__add-button"
-							type="button"
-							aria-label="Добавить пользователя"
-						></button>
-					</section>
-					<section class="places profile__places">
-						<ul class="places__items">
-							<li class="places__item">
-								<div class="places__image-content">
-									<img
-										src="./images/profile/Kudikina-gora.jpg"
-										alt="Змей Горыныч дер. Каменка Липецкая Область, парк 'Кудыкина гора'."
-										class="places__image"
-									/>
-								</div>
-								<div class="text-content places__text-content">
-									<h2 class="title places__title">Кудыкина гора</h2>
-									<button
-										type="button"
-										class="places__like-button"
-										aria-label="Нравится"
-									></button>
-								</div>
-							</li>
-							<li class="places__item">
-								<img
-									src="./images/profile/Kaluga.jpg"
-									alt="река Угры ви лес, Калужская область."
-									class="places__image"
-								/>
-								<div class="text-content places__text-content">
-									<h2 class="title places__title">Калужская область</h2>
-									<button
-										type="button"
-										class="places__like-button"
-										aria-label="Нравится"
-									></button>
-								</div>
-							</li>
-							<li class="places__item">
-								<img
-									src="./images/profile/Samara.jpg"
-									alt="река Волга вблизи г. Самара."
-									class="places__image"
-								/>
-								<div class="text-content places__text-content">
-									<h2 class="title places__title">Самара</h2>
-									<button
-										type="button"
-										class="places__like-button"
-										aria-label="Нравится"
-									></button>
-								</div>
-							</li>
-							<li class="places__item">
-								<img
-									src="./images/profile/Serebrjannij-kamen.jpg"
-									alt="Гора Серебрянный камень, Урал."
-									class="places__image"
-								/>
-								<div class="text-content places__text-content">
-									<h2 class="title places__title">Гора Серебрянный камень</h2>
-									<button
-										type="button"
-										class="places__like-button"
-										aria-label="Нравится"
-									></button>
-								</div>
-							</li>
-							<li class="places__item">
-								<img
-									src="./images/profile/Kemerovskaja-obl.jpg"
-									alt="Лес и горы, Кемеровская область."
-									class="places__image"
-								/>
-								<div class="text-content places__text-content">
-									<h2 class="title places__title">Кемеровская область</h2>
-									<button
-										type="button"
-										class="places__like-button"
-										aria-label="Нравится"
-									></button>
-								</div>
-							</li>
-							<li class="places__item">
-								<img
-									src="./images/profile/Krasnoyarskij-kraj.jpg"
-									alt="Енисей и тайга,Красноярский край."
-									class="places__image"
-								/>
-								<div class="text-content places__text-content">
-									<h2 class="title places__title">Красноярский край</h2>
-									<button
-										type="button"
-										class="places__like-button"
-										aria-label="Нравится"
-									></button>
-								</div>
-							</li>
-						</ul>
-					</section>
-				</article>
-			</main>
-			<footer class="footer page__footer">
-				<p class="footer__copyright">&copy; 2022 Mesto Russia</p>
-			</footer>
-		</div>
-		<article class="popup page__popup">
-			<div class="popup__container">
-				<button
-					class="button popup__close-button"
-					type="button"
-					aria-label="Закрыть"
-				></button>
-				<form action="#" class="popup__form" method="POST">
-					<h2 class="title popup__title">Редактировать профиль</h2>
-					<input
-						type="text"
-						placeholder="Жак-Ив Кусто"
-						class="popup__input popup__input-name"
-						name="name"
-						autofocus
-					/>
-					<input
-						type="text"
-						placeholder="Исследователь океана"
-						class="popup__input popup__input-job"
-						name="career"
-					/>
-					<button
-						type="submit"
-						class="button popup__button"
-						aria-label="Сохранить"
-					>
-						Сохранить
-					</button>
-				</form>
-			</div>
-		</article>
-		<div class="page__overlay"></div>
-		<script src="./scripts/scripts.js"></script>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Место</title>
+  </head>
+  <body class="page">
+    <div class="page__container">
+      <header class="header page__header">
+        <img
+          src="./images/header/logo.svg"
+          alt="Логотип - Место (Россия)"
+          class="logo header__logo"
+        />
+      </header>
+      <main class="content page__content">
+        <article class="profile">
+          <section class="profile__card">
+            <img
+              src="./images/profile/Avatar.jpg"
+              alt="Путешественник"
+              class="avatar profile__avatar"
+            />
+            <div class="profile__content-wrapper">
+              <div class="profile__title-wrapper">
+                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <p class="subtitle profile__subtitle">Исследователь океана</p>
+              </div>
+              <button
+                class="button edit-button profile__edit-button"
+                type="button"
+                aria-label="Редактировать данные пользователя"
+              ></button>
+            </div>
+            <button
+              class="button profile__add-button"
+              type="button"
+              aria-label="Добавить пользователя"
+            ></button>
+          </section>
+          <section class="places profile__places">
+            <ul class="places__items">
+              <li class="places__item">
+                <img
+                  src="./images/profile/Kudikina-gora.jpg"
+                  alt="Змей Горыныч дер. Каменка Липецкая Область, парк 'Кудыкина гора'."
+                  class="places__image"
+                />
+                <div class="text-content places__text-content">
+                  <h2 class="title places__title">Кудыкина гора</h2>
+                  <button
+                    type="button"
+                    class="button places__like-button"
+                    aria-label="Нравится"
+                  ></button>
+                </div>
+              </li>
+              <li class="places__item">
+                <img
+                  src="./images/profile/Kaluga.jpg"
+                  alt="река Угры ви лес, Калужская область."
+                  class="places__image"
+                />
+                <div class="text-content places__text-content">
+                  <h2 class="title places__title">Калужская область</h2>
+                  <button
+                    type="button"
+                    class="button places__like-button"
+                    aria-label="Нравится"
+                  ></button>
+                </div>
+              </li>
+              <li class="places__item">
+                <img
+                  src="./images/profile/Samara.jpg"
+                  alt="река Волга вблизи г. Самара."
+                  class="places__image"
+                />
+                <div class="text-content places__text-content">
+                  <h2 class="title places__title">Самара</h2>
+                  <button
+                    type="button"
+                    class="button places__like-button"
+                    aria-label="Нравится"
+                  ></button>
+                </div>
+              </li>
+              <li class="places__item">
+                <img
+                  src="./images/profile/Serebrjannij-kamen.jpg"
+                  alt="Гора Серебрянный камень, Урал."
+                  class="places__image"
+                />
+                <div class="text-content places__text-content">
+                  <h2 class="title places__title">Гора Серебрянный камень</h2>
+                  <button
+                    type="button"
+                    class="button places__like-button"
+                    aria-label="Нравится"
+                  ></button>
+                </div>
+              </li>
+              <li class="places__item">
+                <img
+                  src="./images/profile/Kemerovskaja-obl.jpg"
+                  alt="Лес и горы, Кемеровская область."
+                  class="places__image"
+                />
+                <div class="text-content places__text-content">
+                  <h2 class="title places__title">Кемеровская область</h2>
+                  <button
+                    type="button"
+                    class="button places__like-button"
+                    aria-label="Нравится"
+                  ></button>
+                </div>
+              </li>
+              <li class="places__item">
+                <img
+                  src="./images/profile/Krasnoyarskij-kraj.jpg"
+                  alt="Енисей и тайга,Красноярский край."
+                  class="places__image"
+                />
+                <div class="text-content places__text-content">
+                  <h2 class="title places__title">Красноярский край</h2>
+                  <button
+                    type="button"
+                    class="button places__like-button"
+                    aria-label="Нравится"
+                  ></button>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </article>
+      </main>
+      <footer class="footer page__footer">
+        <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+      </footer>
+    </div>
+    <div class="page__overlay">
+      <div class="popup__modal-window">
+        <button
+          class="button popup__close-button"
+          type="button"
+          aria-label="Закрыть"
+        ></button>
+        <form action="#" class="popup__form" method="POST" name="edit-profile">
+          <h2 class="title popup__title">Редактировать профиль</h2>
+          <input
+            type="text"
+            placeholder="Имя"
+            class="popup__input popup__input_field_name"
+            name="name"
+            autofocus
+            required
+          />
+          <input
+            type="text"
+            placeholder="О себе"
+            class="popup__input popup__input_field_job"
+            name="job"
+            required
+          />
+          <button
+            type="submit"
+            class="button popup__button"
+            aria-label="Сохранить"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+    <script src="./scripts/scripts.js"></script>
+  </body>
 </html>
