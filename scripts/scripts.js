@@ -1,4 +1,4 @@
-let container = document.querySelector('.page__overlay');
+let container = document.querySelector('.popup');
 let editButton = document.querySelector('.profile__edit-button');
 let closeButton = container.querySelector('.popup__close-button');
 let profileName = document.querySelector('.profile__title');
@@ -10,13 +10,13 @@ let currentName = 'Жак-Ив Кусто';
 let currentJob = 'Исследователь океана';
 
 function showPopup() {
-  container.classList.add('page__overlay_opened');
+  container.classList.add('popup_opened');
   nameInput.value = currentName;
   jobInput.value = currentJob;
 }
 
 function hidePopup() {
-  container.classList.remove('page__overlay_opened');
+  container.classList.remove('popup_opened');
 }
 
 function formSubmitHandler(evt) {
