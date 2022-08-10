@@ -6,13 +6,11 @@ let profileJob = document.querySelector('.profile__subtitle');
 let nameInput = document.querySelector('.popup__input_field_name');
 let jobInput = document.querySelector('.popup__input_field_job');
 let popupForm = document.querySelector('.popup__form');
-let currentName;
-let currentJob;
 
 function showPopup() {
   container.classList.add('popup_opened');
-  currentName = nameInput.value;
-  currentJob = jobInput.value;
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
 }
 
 function hidePopup() {
