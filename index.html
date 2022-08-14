@@ -59,7 +59,7 @@
         ></button>
         <form
           action="#"
-          class="popup__form popup_opened"
+          class="popup__form popup__form_type_edit"
           method="POST"
           name="edit-profile"
         >
@@ -78,9 +78,8 @@
             name="job"
           />
           <button
-            data-action="edit-profile"
             type="submit"
-            class="button popup__button"
+            class="button popup__button popup__button_type_edit"
             aria-label="Сохранить"
           >
             Сохранить
@@ -88,7 +87,7 @@
         </form>
         <form
           action="#"
-          class="popup__form popup__form_add_card"
+          class="popup__form popup__form_type_add"
           method="POST"
           name="add-card"
         >
@@ -107,10 +106,9 @@
             name="card-image-link"
           />
           <button
-            data-action="add-card"
             type="submit"
-            class="button popup__button popup__button_new-card"
-            aria-label="Сохранить"
+            class="button popup__button popup__button_type_add"
+            aria-label="Добавить"
           >
             Создать
           </button>
