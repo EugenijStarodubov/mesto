@@ -59,8 +59,6 @@ let addCards = (cardsData) => {
   }
 };
 
-addCards(initialCards);
-
 function showEditForm() {
   container.classList.add('popup_opened');
   editForm.classList.add('popup_opened');
@@ -105,6 +103,8 @@ const removeCard = (evt) => {
   const cardRemoveItem = cardsContainer.querySelector('.places__item');
   cardRemoveItem.parentNode.removeChild(cardRemoveItem);
 };
+
+addCards(initialCards);
 
 container.addEventListener('click', (evt) => {
   if (evt.target.classList === closeButton.classList) {
