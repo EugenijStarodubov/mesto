@@ -42,98 +42,7 @@
             ></button>
           </section>
           <section class="places profile__places">
-            <ul class="places__items">
-              <li class="places__item">
-                <img
-                  src="./images/profile/Kudikina-gora.jpg"
-                  alt="Змей Горыныч дер. Каменка Липецкая Область, парк 'Кудыкина гора'."
-                  class="places__image"
-                />
-                <div class="text-content places__text-content">
-                  <h2 class="title places__title">Кудыкина гора</h2>
-                  <button
-                    type="button"
-                    class="button places__like-button"
-                    aria-label="Нравится"
-                  ></button>
-                </div>
-              </li>
-              <li class="places__item">
-                <img
-                  src="./images/profile/Kaluga.jpg"
-                  alt="река Угры ви лес, Калужская область."
-                  class="places__image"
-                />
-                <div class="text-content places__text-content">
-                  <h2 class="title places__title">Калужская область</h2>
-                  <button
-                    type="button"
-                    class="button places__like-button"
-                    aria-label="Нравится"
-                  ></button>
-                </div>
-              </li>
-              <li class="places__item">
-                <img
-                  src="./images/profile/Samara.jpg"
-                  alt="река Волга вблизи г. Самара."
-                  class="places__image"
-                />
-                <div class="text-content places__text-content">
-                  <h2 class="title places__title">Самара</h2>
-                  <button
-                    type="button"
-                    class="button places__like-button"
-                    aria-label="Нравится"
-                  ></button>
-                </div>
-              </li>
-              <li class="places__item">
-                <img
-                  src="./images/profile/Serebrjannij-kamen.jpg"
-                  alt="Гора Серебрянный камень, Урал."
-                  class="places__image"
-                />
-                <div class="text-content places__text-content">
-                  <h2 class="title places__title">Гора Серебрянный камень</h2>
-                  <button
-                    type="button"
-                    class="button places__like-button"
-                    aria-label="Нравится"
-                  ></button>
-                </div>
-              </li>
-              <li class="places__item">
-                <img
-                  src="./images/profile/Kemerovskaja-obl.jpg"
-                  alt="Лес и горы, Кемеровская область."
-                  class="places__image"
-                />
-                <div class="text-content places__text-content">
-                  <h2 class="title places__title">Кемеровская область</h2>
-                  <button
-                    type="button"
-                    class="button places__like-button"
-                    aria-label="Нравится"
-                  ></button>
-                </div>
-              </li>
-              <li class="places__item">
-                <img
-                  src="./images/profile/Krasnoyarskij-kraj.jpg"
-                  alt="Енисей и тайга,Красноярский край."
-                  class="places__image"
-                />
-                <div class="text-content places__text-content">
-                  <h2 class="title places__title">Красноярский край</h2>
-                  <button
-                    type="button"
-                    class="button places__like-button"
-                    aria-label="Нравится"
-                  ></button>
-                </div>
-              </li>
-            </ul>
+            <ul class="places__items"></ul>
           </section>
         </article>
       </main>
@@ -148,7 +57,12 @@
           type="button"
           aria-label="Закрыть"
         ></button>
-        <form action="#" class="popup__form" method="POST" name="edit-profile">
+        <form
+          action="#"
+          class="popup__form popup_opened"
+          method="POST"
+          name="edit-profile"
+        >
           <h2 class="title popup__title">Редактировать профиль</h2>
           <input
             type="text"
@@ -164,6 +78,7 @@
             name="job"
           />
           <button
+            data-action="edit-profile"
             type="submit"
             class="button popup__button"
             aria-label="Сохранить"
@@ -171,8 +86,51 @@
             Сохранить
           </button>
         </form>
+        <form
+          action="#"
+          class="popup__form popup__form_add_card"
+          method="POST"
+          name="add-card"
+        >
+          <h2 class="title popup__title">Новое место</h2>
+          <input
+            type="text"
+            placeholder="Название"
+            class="popup__input popup__input_field_card-name"
+            name="card-name"
+            autofocus
+          />
+          <input
+            type="text"
+            placeholder="Ссылка на картинку"
+            class="popup__input popup__input_field_card-image-link"
+            name="card-image-link"
+          />
+          <button
+            data-action="add-card"
+            type="submit"
+            class="button popup__button popup__button_new-card"
+            aria-label="Сохранить"
+          >
+            Создать
+          </button>
+        </form>
       </div>
     </div>
+
+    <template id="cardtemplate">
+      <li class="places__item">
+        <img src="" alt="" class="places__image" />
+        <div class="text-content places__text-content">
+          <h2 class="title places__title"></h2>
+          <button
+            type="button"
+            class="button places__like-button"
+            aria-label="Нравится"
+          ></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/scripts.js"></script>
   </body>
 </html>
