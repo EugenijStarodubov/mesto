@@ -51,7 +51,7 @@ let addCards = (cardsData) => {
     const cardItem = cardTemplate
       .querySelector('.places__item')
       .cloneNode(true);
-    cardsContainer.append(cardItem);
+    cardsContainer.prepend(cardItem);
     cardItem.querySelector('.places__title').textContent =
       cardsData[i - 1].name;
     cardItem.querySelector('.places__image').src = cardsData[i - 1].link;
@@ -71,6 +71,8 @@ function showEditForm() {
 const showCardForm = () => {
   container.classList.add('popup_opened');
   addForm.classList.add('popup_opened');
+  nameCardInput.value = '';
+  linkImageCardInput.value = '';
 };
 
 const closePopup = () => {
@@ -92,30 +94,32 @@ let formSubmitHandler = (evt) => {
     profileJob.textContent = jobInput.value;
   }
   if (evt.target.classList.contains('popup__form_type_add')) {
-    let inputCardData = [
+    const inputCardData = [
       {
         name: nameCardInput.value,
         link: linkImageCardInput.value,
       },
     ];
-    console.log(nameCardInput.value);
     inputCardData.name = nameCardInput.value;
     inputCardData.link = linkImageCardInput.value;
     addCards(inputCardData);
-    nameCardInput.value = '';
-    linkImageCardInput.value = '';
   }
   closePopup();
 };
 
+const likeCard = (evt) => {
+  evt.target.classList.toggle('places__like-button_active');
+};
+
 document.querySelector('.page').addEventListener('click', (evt) => {
   if (evt.target.classList.contains('profile__edit-button')) {
-    console.log('111111');
     showEditForm();
   }
   if (evt.target.classList.contains('profile__add-button')) {
-    console.log('2222222');
     showCardForm();
+  }
+  if (evt.target.classList.contains('places__like-button')) {
+    likeCard(evt);
   }
 });
 
