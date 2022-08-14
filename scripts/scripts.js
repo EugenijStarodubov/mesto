@@ -81,12 +81,6 @@ const closePopup = () => {
   container.classList.remove('popup_opened');
 };
 
-container.addEventListener('click', (evt) => {
-  if (evt.target.classList === closeButton.classList) {
-    closePopup();
-  }
-});
-
 let formSubmitHandler = (evt) => {
   evt.preventDefault();
   if (evt.target.classList.contains('popup__form_type_edit')) {
@@ -107,6 +101,17 @@ let formSubmitHandler = (evt) => {
   closePopup();
 };
 
+const removeCard = (evt) => {
+  const cardRemoveItem = cardsContainer.querySelector('.places__item');
+  cardRemoveItem.parentNode.removeChild(cardRemoveItem);
+};
+
+container.addEventListener('click', (evt) => {
+  if (evt.target.classList === closeButton.classList) {
+    closePopup();
+  }
+});
+
 const likeCard = (evt) => {
   evt.target.classList.toggle('places__like-button_active');
 };
@@ -120,6 +125,9 @@ document.querySelector('.page').addEventListener('click', (evt) => {
   }
   if (evt.target.classList.contains('places__like-button')) {
     likeCard(evt);
+  }
+  if (evt.target.classList.contains('places__delete-button')) {
+    removeCard(evt);
   }
 });
 
