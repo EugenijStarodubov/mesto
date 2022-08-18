@@ -23,7 +23,9 @@ const inputCardData = [
   },
 ];
 
-//Практическая работа 5
+const transitionPopup = (popup) => {
+  popup.style.transition = 'visibility .3s linear, opacity .3s linear';
+};
 
 const addCards = (cardsData) => {
   const cardItem = cardTemplate.querySelector('.places__item').cloneNode(true);
@@ -45,6 +47,7 @@ const initCards = (cardsData) => {
 initCards(initialCards);
 
 const showPopup = function (popup) {
+  transitionPopup(popup);
   popup.classList.add('popup_opened');
 };
 
@@ -55,6 +58,7 @@ const showImage = (evt) => {
 };
 
 const closePopup = (popup) => {
+  transitionPopup(popup);
   popup.classList.remove('popup_opened');
 };
 
