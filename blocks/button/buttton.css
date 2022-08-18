@@ -1,14 +1,14 @@
 .button {
-	box-sizing: border-box;
-	text-decoration: none;
-	border: none;
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center;
-	cursor: pointer;
-	transition: opacity 0.9s ease-out 0s;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+  transition: opacity 0.9s ease-out 0s;
 }
 
 .button:hover {
-	opacity: 0.6;
+  opacity: 0.6;
 }

@@ -1,0 +1,13 @@
+.popup__show-image {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  height: auto;
+  min-height: 300px;
+  width: 100%;
+}
+
+@media screen and (min-width: 360px) {
+  .popup__show-image {
+  }
+}
