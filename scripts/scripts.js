@@ -1,6 +1,6 @@
 const page = document.querySelector('.page');
 const container = document.querySelector('.popup');
-const popupContainer = document.querySelector('.popup__container');
+const popupContainer = document.querySelector('.page__popup-wrapper');
 const cardsContainer = document.querySelector('.places__items');
 const cardTemplate = document.querySelector('#cardtemplate').content;
 const profileName = document.querySelector('.profile__title');
