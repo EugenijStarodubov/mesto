@@ -18,7 +18,7 @@
       </header>
       <main class="content page__content">
         <article class="profile">
-          <section class="profile__card">
+          <div class="profile__card">
             <img
               src="./images/profile/Avatar.jpg"
               alt="Путешественник"
@@ -40,7 +40,7 @@
               type="button"
               aria-label="Добавить пользователя"
             ></button>
-          </section>
+          </div>
           <section class="places profile__places">
             <ul class="places__items"></ul>
           </section>
@@ -111,7 +111,7 @@
               name="input-card-name"
             />
             <input
-              type="text"
+              type="url"
               placeholder="Ссылка на картинку"
               class="popup__input popup__input_field_card-image-link"
               name="inpu-card-image-link"
@@ -155,6 +155,7 @@
         </div>
       </li>
     </template>
-    <script src="./scripts/scripts.js"></script>
+    <script src="./vendor/data/cards.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
