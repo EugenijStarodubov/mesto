@@ -12,6 +12,7 @@ const editPopup = document.querySelector('.popup_type_edit');
 const editForm = document.querySelector('.popup__form_type_edit');
 const addPopup = document.querySelector('.popup_type_add');
 const addForm = document.querySelector('.popup__form_type_add');
+const imagePopup = document.querySelector('.popup_type_image');
 const nameInput = document.querySelector('.popup__input_field_name');
 const jobInput = document.querySelector('.popup__input_field_job');
 const nameCardInput = document.querySelector('.popup__input_field_card-name');
@@ -74,8 +75,6 @@ initCards(initialCards);
 
 function showEditForm() {
   editPopup.classList.add('popup_opened');
-  // editForm.classList.add('popup_opened');
-
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 }
@@ -86,9 +85,19 @@ const showCardForm = () => {
   linkImageCardInput.value = '';
 };
 
+const showImage = (evt) => {
+  // const imageItem = cardTemplate.querySelector('.places__item').cloneNode(true);
+  imagePopup.querySelector('.popup__image').src = evt.target.src;
+  imagePopup.querySelector('.popup__image').alt = evt.target.alt;
+  imagePopup.querySelector('.popup__image-caption').textContent =
+    evt.target.alt;
+  imagePopup.classList.add('popup_opened');
+};
+
 const closePopup = () => {
   addPopup.classList.remove('popup_opened');
   editPopup.classList.remove('popup_opened');
+  imagePopup.classList.remove('popup_opened');
 };
 
 const removeCard = (evt) => {
@@ -124,6 +133,9 @@ cardsContainer.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('places__delete-button')) {
     removeCard(evt);
   }
+  if (evt.target.classList.contains('places__image')) {
+    showImage(evt);
+  }
 });
 
 popupContainer.addEventListener('submit', (evt) => {
@@ -138,7 +150,6 @@ popupContainer.addEventListener('submit', (evt) => {
   } else if (evt.target.classList.contains('popup__form_type_add')) {
     inputCardData.name = nameCardInput.value;
     inputCardData.link = linkImageCardInput.value;
-
     addCards(inputCardData);
   }
   closePopup();

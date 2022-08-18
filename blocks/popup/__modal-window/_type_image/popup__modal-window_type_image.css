@@ -1,0 +1,11 @@
+.popup__modal-window_type_image {
+  max-height: 300px;
+  max-width: 75vw;
+}
+
+@madia screen and (min-width: 360px) {
+  .popup__modal-window_type_image {
+    max-width: 75vw;
+    max-height: 75vh;
+  }
+}

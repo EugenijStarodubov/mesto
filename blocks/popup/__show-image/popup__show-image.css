@@ -2,12 +2,12 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  height: auto;
-  min-height: 300px;
-  width: 100%;
+  min-width: 240px;
 }
 
 @media screen and (min-width: 360px) {
   .popup__show-image {
+    max-width: 75vw;
+    max-height: 75vh;
   }
 }
