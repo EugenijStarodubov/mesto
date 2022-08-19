@@ -1,5 +1,4 @@
 const profileItem = document.querySelector('.profile__card');
-const buttons = profileItem.querySelector('.button');
 const popupContainer = document.querySelector('.page__popup-wrapper');
 const cardsContainer = document.querySelector('.places__items');
 const cardTemplate = document.querySelector('#cardtemplate').content;
@@ -27,20 +26,38 @@ const transitionPopup = (popup) => {
   popup.style.transition = 'visibility .3s linear, opacity .3s linear';
 };
 
-const addCards = (cardsData) => {
+const cardListener = (evt) => {
+  if (evt.target.classList.contains('places__like-button')) {
+    likeCard(evt);
+  }
+  if (evt.target.classList.contains('places__delete-button')) {
+    removeCard(evt);
+  }
+  if (evt.target.classList.contains('places__image')) {
+    showImage(evt);
+    showPopup(imagePopup);
+  }
+};
+
+const addCard = (cardItem) => {
+  cardsContainer.prepend(cardItem);
+};
+
+const createCard = (cardsData) => {
   const cardItem = cardTemplate.querySelector('.places__item').cloneNode(true);
   const cardImage = cardItem.querySelector('.places__image');
   cardItem.querySelector('.places__title').textContent = cardsData.name;
   cardImage.src = cardsData.link;
   cardImage.alt = cardsData.name;
   if (cardsData.name && cardsData.link) {
-    cardsContainer.prepend(cardItem);
+    cardItem.addEventListener('click', cardListener);
+    return cardItem;
   }
 };
 
 const initCards = (cardsData) => {
   cardsData.forEach((elem) => {
-    addCards(elem);
+    addCard(createCard(elem));
   });
 };
 
@@ -63,8 +80,8 @@ const closePopup = (popup) => {
 };
 
 const removeCard = (evt) => {
-  const cardRemoveItem = cardsContainer.querySelector('.places__item');
-  cardRemoveItem.parentNode.removeChild(cardRemoveItem);
+  const cardRemoveItem = evt.target.closest('.places__item');
+  cardRemoveItem.remove();
 };
 
 popupContainer.addEventListener('click', (evt) => {
@@ -89,19 +106,6 @@ profileItem.addEventListener('click', (evt) => {
   }
 });
 
-cardsContainer.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('places__like-button')) {
-    likeCard(evt);
-  }
-  if (evt.target.classList.contains('places__delete-button')) {
-    removeCard(evt);
-  }
-  if (evt.target.classList.contains('places__image')) {
-    showImage(evt);
-    showPopup(imagePopup);
-  }
-});
-
 popupContainer
   .querySelector('.popup__form_type_edit')
   .addEventListener('submit', (evt) => {
@@ -114,7 +118,7 @@ popupContainer
       profileName.textContent = nameInput.value;
       profileJob.textContent = jobInput.value;
     }
-    closePopup(popupContainer.querySelector('.popup_opened'));
+    closePopup(editPopup);
   });
 
 popupContainer
@@ -123,6 +127,6 @@ popupContainer
     evt.preventDefault();
     inputCardData.name = nameCardInput.value;
     inputCardData.link = linkImageCardInput.value;
-    addCards(inputCardData);
-    closePopup(popupContainer.querySelector('.popup_opened'));
+    addCard(createCard(inputCardData));
+    closePopup(addPopup);
   });
