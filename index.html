@@ -66,23 +66,30 @@
             id="form-edit"
           >
             <h2 class="title popup__title">Редактировать профиль</h2>
-            <input
-              type="text"
-              placeholder="Имя"
-              class="popup__input popup__input_field_name"
-              name="input-name"
-            />
-            <input
-              type="text"
-              placeholder="О себе"
-              class="popup__input popup__input_field_job"
-              name="input-job"
-            />
+            <label class="popup__form-field">
+              <input
+                type="text"
+                placeholder="Имя"
+                class="popup__input popup__input_field_name"
+                name="input-name"
+              />
+              <span class="popup__input_type_error"></span>
+            </label>
+            <label class="popup__form-field">
+              <input
+                type="text"
+                placeholder="О себе"
+                class="popup__input popup__input_field_job"
+                name="input-job"
+              />
+              <span class="popup__input_type_error"></span>
+            </label>
             <button
               type="submit"
-              class="button popup__button popup__button_type_edit"
+              class="button popup__button popup__button_type_edit popup__button_disabled"
               aria-label="Сохранить"
               name="edit-form-button"
+              disabled
             >
               Сохранить
             </button>
@@ -104,18 +111,24 @@
             id="form-add"
           >
             <h2 class="title popup__title">Новое место</h2>
-            <input
-              type="text"
-              placeholder="Название"
-              class="popup__input popup__input_field_card-name"
-              name="input-card-name"
-            />
-            <input
-              type="url"
-              placeholder="Ссылка на картинку"
-              class="popup__input popup__input_field_card-image-link"
-              name="inpu-card-image-link"
-            />
+            <label class="popup__form-field">
+              <input
+                type="text"
+                placeholder="Название"
+                class="popup__input popup__input_field_card-name"
+                name="input-card-name"
+              />
+              <span class="popup__input_type_error"></span>
+            </label>
+            <label class="popup__form-field">
+              <input
+                type="url"
+                placeholder="Ссылка на картинку"
+                class="popup__input popup__input_field_card-image-link"
+                name="inpu-card-image-link"
+              />
+              <span class="popup__input_type_error"></span>
+            </label>
             <button
               type="submit"
               class="button popup__button popup__button_type_add"
