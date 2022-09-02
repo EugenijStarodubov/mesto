@@ -22,10 +22,6 @@ const inputCardData = [
   },
 ];
 
-const transitionPopup = (popup) => {
-  popup.style.transition = 'visibility .3s linear, opacity .3s linear';
-};
-
 const cardListener = (evt) => {
   if (evt.target.classList.contains('places__like-button')) {
     likeCard(evt);
@@ -64,7 +60,9 @@ const initCards = (cardsData) => {
 initCards(initialCards);
 
 const showPopup = function (popup) {
-  transitionPopup(popup);
+  if (!popup.classList.contains('popup_type_image')) {
+    resetValidation(popup);
+  }
   popup.classList.add('popup_opened');
 };
 
@@ -75,7 +73,6 @@ const showImage = (evt) => {
 };
 
 const closePopup = (popup) => {
-  transitionPopup(popup);
   popup.classList.remove('popup_opened');
 };
 
@@ -85,7 +82,17 @@ const removeCard = (evt) => {
 };
 
 popupContainer.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('popup__close-button')) {
+  if (
+    evt.target.classList.contains('popup__close-button') ||
+    evt.target.classList.contains('popup') ||
+    evt.target.classList.contains('popup__modal-window')
+  ) {
+    closePopup(popupContainer.querySelector('.popup_opened'));
+  }
+});
+
+document.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Escape') {
     closePopup(popupContainer.querySelector('.popup_opened'));
   }
 });
