@@ -3,13 +3,8 @@
   margin: 0;
   border: none;
   width: 84.4%;
-  min-height: 12px;
-}
-
-.popup__form-field:not(:last-of-type) {
-  margin-bottom: 13px;
 }
 
 .popup__form-field:last-of-type {
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }

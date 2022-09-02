@@ -18,9 +18,9 @@ const setButtonActive = function (buttonElement) {
 };
 
 const resetValidation = function (popup) {
-  const formItem = popup.querySelector('.popup__form');
-  const inputItem = popup.querySelector('.popup__input');
-  const submitButton = popup.querySelector('.popup__button');
+  const formItem = popup.querySelector(config.formSelector);
+  const inputItem = popup.querySelector(config.inputSelector);
+  const submitButton = popup.querySelector(config.submitButtonSelector);
   hideInputError(formItem, inputItem);
   setButtonInactive(submitButton);
 };
@@ -75,10 +75,8 @@ const setEventListeners = function (form) {
 
 const enableValidation = function (config) {
   const formsList = Array.from(document.querySelectorAll(config.formSelector));
+  /*Но ведь в данном случае form - переменная для метода forEach, который перебирает массив из 77 строки*/
   formsList.forEach(function (form) {
-    form.addEventListener('submit', function (evt) {
-      evt.preventDefault();
-    });
     setEventListeners(form);
   });
 };
