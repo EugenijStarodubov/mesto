@@ -19,9 +19,13 @@ const setButtonActive = function (buttonElement) {
 
 const resetValidation = function (popup) {
   const formItem = popup.querySelector(config.formSelector);
-  const inputItem = popup.querySelector(config.inputSelector);
-  const submitButton = popup.querySelector(config.submitButtonSelector);
-  hideInputError(formItem, inputItem);
+  const inputItems = Array.from(
+    formItem.querySelectorAll(config.inputSelector)
+  );
+  const submitButton = formItem.querySelector(config.submitButtonSelector);
+  inputItems.forEach(function (input) {
+    hideInputError(formItem, input);
+  });
   setButtonInactive(submitButton);
 };
 

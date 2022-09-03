@@ -59,18 +59,7 @@ const initCards = (cardsData) => {
 
 initCards(initialCards);
 
-const checkImagePopup = function (popup) {
-  if (!popup.classList.contains('popup_type_image')) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
 const showPopup = function (popup) {
-  if (checkImagePopup(popup)) {
-    resetValidation(popup);
-  }
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handleEscClosePopup);
 };
@@ -116,10 +105,12 @@ profileItem.addEventListener('click', (evt) => {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
     showPopup(popupEdit);
+    resetValidation(popupEdit);
   }
   if (evt.target.classList.contains('profile__add-button')) {
     document.querySelector('.popup__form_type_add').reset();
     showPopup(popupAdd);
+    resetValidation(popupAdd);
   }
 });
 
