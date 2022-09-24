@@ -13,6 +13,8 @@ const popupAdd = document.querySelector('.popup_type_add');
 const nameInput = document.querySelector('.popup__input_field_name');
 const jobInput = document.querySelector('.popup__input_field_job');
 const nameCardInput = document.querySelector('.popup__input_field_card-name');
+const formAdd = document.querySelector('.popup__form_type_add');
+const formEdit = document.querySelector('.popup__form_type_edit');
 const linkImageCardInput = document.querySelector(
 	'.popup__input_field_card-image-link'
 );
@@ -39,12 +41,6 @@ const closePopup = (popup) => {
 	document.removeEventListener('keydown', handleEscClosePopup);
 };
 
-const createCardItem = function (item) {
-
-	const card = new Card(item, cardsTemplate, showPopup);
-	card.addCard()
-}
-
 const initCard = function (cardsData) {
 	cardsData.forEach(item => {
 		const card = new Card(item, cardsTemplate, showPopup, closePopup);
@@ -62,9 +58,6 @@ const handleClosePopup = function (evt) {
 	}
 }
 
-const formValidator = new FormValidator(config)
-formValidator.enableValidation(config);
-
 initCard(initialCards);
 
 popupContainer.addEventListener('click', handleClosePopup);
@@ -74,11 +67,15 @@ profileItem.addEventListener('click', (evt) => {
 		nameInput.value = profileName.textContent;
 		jobInput.value = profileJob.textContent;
 		showPopup(popupEdit);
+		const formValidator = new FormValidator(config, formEdit);
+		formValidator.enableValidation();
 		formValidator.resetValidation(popupEdit);
 	}
 	if (evt.target.classList.contains('profile__add-button')) {
 		document.querySelector('.popup__form_type_add').reset();
 		showPopup(popupAdd);
+		const formValidator = new FormValidator(config, formAdd);
+		formValidator.enableValidation();
 		formValidator.resetValidation(popupAdd);
 	}
 });
@@ -104,6 +101,6 @@ popupContainer
 		evt.preventDefault();
 		inputCardData.name = nameCardInput.value;
 		inputCardData.link = linkImageCardInput.value;
-		createCardItem(inputCardData);
+		const card = new Card(inputCardData, cardsTemplate, showPopup).addCard();
 		closePopup(popupAdd);
 	});
