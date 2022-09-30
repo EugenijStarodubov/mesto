@@ -4,32 +4,19 @@ export class Card {
 	#cardItem;
 	#name;
 	#link;
-	#container;
-	#imagePopupItem;
-	#showPopup;
-	#imagePopup;
+	#cardImage;
+	#hadleCardClick;
 
-
-	constructor(cardsData, cardsTemplate, showPopup) {
+	constructor(cardsData, cardsTemplate, hadleCardClick) {
 		this.#cardsTemplate = cardsTemplate;
 		this.#name = cardsData.name;
 		this.#link = cardsData.link;
-		this.#container = document.querySelector('.places__items');
-		this.#imagePopup = document.querySelector('.popup_type_image');
-		this.#imagePopupItem = document.querySelector('.popup__image')
-		this.#showPopup = showPopup;
+		this.#hadleCardClick = hadleCardClick;
 	}
 
 	#getTemplate() {
 		return this.#cardsTemplate.cloneNode(true).content;
 	}
-
-	#showImage = (evt) => {
-
-		this.#imagePopupItem.src = evt.target.src;
-		this.#imagePopupItem.alt = evt.target.alt;
-		this.#imagePopup.querySelector('.popup__image-caption').textContent = evt.target.alt;
-	};
 
 	#handleLikeButton(evt) {
 		evt.target.classList.toggle('places__like-button_active');
@@ -39,12 +26,7 @@ export class Card {
 		evt.target.closest('.places__item').remove();
 	}
 
-	#handleImagePopup(evt) {
-		this.#showImage(evt);
-		this.#showPopup(this.#imagePopup)
-	}
-
-	#handleCardButtons() {
+	#setEventListeners() {
 
 		this.#cardItem
 			.querySelector('.places__like-button')
@@ -56,17 +38,19 @@ export class Card {
 
 		this.#cardItem
 			.querySelector('.places__image')
-			.addEventListener('click', this.#handleImagePopup.bind(this));
+			.addEventListener('click', () => {
+				this.#hadleCardClick(this.#name, this.#link)
+			});
 	}
 
 	createCardItem() {
 		this.#cardItem = this.#getTemplate();
-
+		this.#cardImage = this.#cardItem.querySelector('.places__image');
 		this.#cardItem.querySelector('.places__title').textContent = this.#name;
-		this.#cardItem.querySelector('.places__image').src = this.#link;
-		this.#cardItem.querySelector('.places__image').alt = this.#name;
+		this.#cardImage.src = this.#link;
+		this.#cardImage.alt = this.#name;
 
-		this.#handleCardButtons();
+		this.#setEventListeners();
 
 		return this.#cardItem;
 	}

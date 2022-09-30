@@ -5,7 +5,6 @@ export class FormValidator {
 	#inactiveButtonClass;
 	#inputErrorClass;
 	#errorClass;
-
 	#submitButton;
 	#inputsList;
 	#errorElement;
@@ -34,14 +33,6 @@ export class FormValidator {
 	#setButtonActive(buttonElement) {
 		buttonElement.classList.remove(this.#inactiveButtonClass);
 		buttonElement.removeAttribute('disabled', false);
-	};
-
-	#resetValidation() {
-		this.#setButtonInactive()
-		this.#inputsList.forEach((input) => {
-			this.#hideInputError(this.#formElement, input);
-		});
-
 	};
 
 	#hasInputsErrors(inputsList) {
@@ -92,9 +83,14 @@ export class FormValidator {
 		});
 	};
 
-	enableValidation() {
-		this.#resetValidation()
-		this.#setEventListeners(this.#formElement);
+	resetValidation() {
+		this.#setButtonInactive()
+		this.#inputsList.forEach((input) => {
+			this.#hideInputError(this.#formElement, input);
+		});
+	};
 
+	enableValidation() {
+		this.#setEventListeners(this.#formElement);
 	};
 }
