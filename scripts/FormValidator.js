@@ -5,7 +5,7 @@ export class FormValidator {
 	#inactiveButtonClass;
 	#inputErrorClass;
 	#errorClass;
-	#inputItems;
+
 	#submitButton;
 	#inputsList;
 	#errorElement;
@@ -20,11 +20,15 @@ export class FormValidator {
 		this.#inputErrorClass = config.inputErrorClass;
 		this.#errorClass = config.errorClass;
 		this.#formElement = formElement;
+		this.#inputsList = Array.from(
+			this.#formElement.querySelectorAll(this.#inputSelector)
+		);
+		this.#submitButton = this.#formElement.querySelector(this.#submitButtonSelector);
 	}
 
-	#setButtonInactive(buttonElement) {
-		buttonElement.classList.add(this.#inactiveButtonClass);
-		buttonElement.setAttribute('disabled', true);
+	#setButtonInactive() {
+		this.#submitButton.classList.add(this.#inactiveButtonClass);
+		this.#submitButton.setAttribute('disabled', true);
 	};
 
 	#setButtonActive(buttonElement) {
@@ -32,15 +36,12 @@ export class FormValidator {
 		buttonElement.removeAttribute('disabled', false);
 	};
 
-	resetValidation(form) {
-		this.#inputItems = Array.from(
-			form.querySelectorAll(this.#inputSelector)
-		);
-		this.#submitButton = form.querySelector(this.#submitButtonSelector);
-		this.#inputItems.forEach((input) => {
-			this.#hideInputError(form, input);
+	#resetValidation() {
+		this.#setButtonInactive()
+		this.#inputsList.forEach((input) => {
+			this.#hideInputError(this.#formElement, input);
 		});
-		this.#setButtonInactive(this.#submitButton);
+
 	};
 
 	#hasInputsErrors(inputsList) {
@@ -80,7 +81,7 @@ export class FormValidator {
 	};
 
 	#setEventListeners(form) {
-		this.#inputsList = Array.from(form.querySelectorAll(this.#inputSelector));
+
 		this.#buttonElement = form.querySelector(this.#submitButtonSelector);
 		this.#toggleButtonState(this.#inputsList, this.#buttonElement);
 		this.#inputsList.forEach((input) => {
@@ -92,6 +93,8 @@ export class FormValidator {
 	};
 
 	enableValidation() {
+		this.#resetValidation()
 		this.#setEventListeners(this.#formElement);
+
 	};
 }

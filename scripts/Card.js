@@ -16,6 +16,7 @@ export class Card {
 		this.#link = cardsData.link;
 		this.#container = document.querySelector('.places__items');
 		this.#imagePopup = document.querySelector('.popup_type_image');
+		this.#imagePopupItem = document.querySelector('.popup__image')
 		this.#showPopup = showPopup;
 	}
 
@@ -23,22 +24,8 @@ export class Card {
 		return this.#cardsTemplate.cloneNode(true).content;
 	}
 
-	#createCard() {
-		this.#cardItem = this.#getTemplate();
-
-		this.#cardItem.querySelector('.places__title').textContent = this.#name;
-		this.#cardItem.querySelector('.places__image').src = this.#link;
-		this.#cardItem.querySelector('.places__image').alt = this.#name;
-
-		this.#handleCardButtons();
-
-		return this.#cardItem;
-	}
-
 	#showImage = (evt) => {
 
-		this.#imagePopup = document.querySelector('.popup_type_image');
-		this.#imagePopupItem = document.querySelector('.popup__image')
 		this.#imagePopupItem.src = evt.target.src;
 		this.#imagePopupItem.alt = evt.target.alt;
 		this.#imagePopup.querySelector('.popup__image-caption').textContent = evt.target.alt;
@@ -72,8 +59,16 @@ export class Card {
 			.addEventListener('click', this.#handleImagePopup.bind(this));
 	}
 
-	addCard() {
-		this.#container.prepend(this.#createCard());
+	createCardItem() {
+		this.#cardItem = this.#getTemplate();
+
+		this.#cardItem.querySelector('.places__title').textContent = this.#name;
+		this.#cardItem.querySelector('.places__image').src = this.#link;
+		this.#cardItem.querySelector('.places__image').alt = this.#name;
+
+		this.#handleCardButtons();
+
+		return this.#cardItem;
 	}
 }
 
