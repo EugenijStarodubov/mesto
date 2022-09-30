@@ -94,6 +94,7 @@ const setPopupsListeners = function (popupList) {
 const setFormsValidaton = function (formsList) {
 	formsList.forEach(form => {
 		forms.set(form, createValidator(form));
+		forms.get(form).enableValidation();
 	});
 };
 
@@ -107,15 +108,13 @@ profileItem.addEventListener('click', (evt) => {
 	if (evt.target.classList.contains('profile__edit-button')) {
 		nameInput.value = profileName.textContent;
 		jobInput.value = profileJob.textContent;
-		showPopup(popupEdit);
 		forms.get(formEdit).resetValidation();
-		forms.get(formEdit).enableValidation();
+		showPopup(popupEdit);
 	}
 
 	if (evt.target.classList.contains('profile__add-button')) {
 		formAdd.reset();
 		forms.get(formAdd).resetValidation();
-		forms.get(formAdd).enableValidation();
 		showPopup(popupAdd);
 	}
 });
