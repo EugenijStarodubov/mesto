@@ -1,3 +1,4 @@
 .prettierrc
-package.json
- 
+.editorconfig
+node_modules
+dist
