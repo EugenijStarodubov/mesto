@@ -41,17 +41,16 @@
 		<div class="popup popup_type_edit">
 			<div class="popup__modal-window">
 				<button class="button popup__close-button" type="button" aria-label="Закрыть"></button>
-				<form action="#" class="popup__form popup__form_type_edit" method="POST" name="edit-profile" id="form-edit"
-					novalidate>
+				<form action="#" class="popup__form popup__form_type_edit" method="POST" name="name" id="form-edit" novalidate>
 					<h2 class="title popup__title">Редактировать профиль</h2>
 					<label class="popup__form-field">
 						<input id="name-input" type="text" placeholder="Имя" class="popup__input popup__input_field_name"
-							name="input-name" minlength="2" maxlength="40" required />
+							name="name" minlength="2" maxlength="40" required />
 						<span id="name-input-error" class="popup__error"></span>
 					</label>
 					<label class="popup__form-field">
 						<input id="about-input" type="text" placeholder="О себе" class="popup__input popup__input_field_job"
-							name="input-job" minlength="2" maxlength="200" required />
+							name="job" minlength="2" maxlength="200" required />
 						<span id="about-input-error" class="popup__error"></span>
 					</label>
 					<button type="submit" class="button popup__button popup__button_type_edit" aria-label="Сохранить"
@@ -69,13 +68,12 @@
 					<h2 class="title popup__title">Новое место</h2>
 					<label class="popup__form-field">
 						<input id="placename-input" type="text" placeholder="Название"
-							class="popup__input popup__input_field_card-name" name="input-card-name" minlength="2" maxlength="30"
-							required />
+							class="popup__input popup__input_field_card-name" name="name" minlength="2" maxlength="30" required />
 						<span id="placename-input-error" class="popup__error"></span>
 					</label>
 					<label class="popup__form-field">
 						<input id="image-input" type="url" placeholder="Ссылка на картинку"
-							class="popup__input popup__input_field_card-image-link" name="inpu-card-image-link" required />
+							class="popup__input popup__input_field_card-image-link" name="link" required />
 						<span id="image-input-error" class="popup__error"></span>
 					</label>
 					<button type="submit" class="button popup__button popup__button_type_add" aria-label="Создать"

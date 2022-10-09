@@ -5,13 +5,13 @@ export class Card {
 	#name;
 	#link;
 	#cardImage;
-	#hadleCardClick;
+	#handleCardClick;
 
-	constructor(cardsData, cardsTemplate, hadleCardClick) {
+	constructor(cardsData, cardsTemplate, handleCardClick) {
 		this.#cardsTemplate = cardsTemplate;
 		this.#name = cardsData.name;
 		this.#link = cardsData.link;
-		this.#hadleCardClick = hadleCardClick;
+		this.#handleCardClick = handleCardClick;
 	}
 
 	#getTemplate() {
@@ -39,12 +39,13 @@ export class Card {
 		this.#cardItem
 			.querySelector('.places__image')
 			.addEventListener('click', () => {
-				this.#hadleCardClick(this.#name, this.#link)
+				this.#handleCardClick(this.#name, this.#link)
 			});
 	}
 
-	createCardItem() {
+	generateCard() {
 		this.#cardItem = this.#getTemplate();
+
 		this.#cardImage = this.#cardItem.querySelector('.places__image');
 		this.#cardItem.querySelector('.places__title').textContent = this.#name;
 		this.#cardImage.src = this.#link;
