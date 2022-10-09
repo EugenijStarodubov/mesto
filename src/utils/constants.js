@@ -6,3 +6,10 @@ export const config = {
 	inputErrorClass: 'popup__input_type_error',
 	errorClass: 'popup__error_visible',
 };
+
+export const cardsTemplate = document.querySelector('#cardtemplate');
+export const cardsContainer = document.querySelector('.places__items')
+export const userSelectorsData = {
+	userName: '.profile__title',
+	userInfo: '.profile__subtitle'
+}

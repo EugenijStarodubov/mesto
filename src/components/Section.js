@@ -22,15 +22,6 @@ export default class Section {
 	}
 
 	addItem(item) {
-		this.#container.prepend(item)
+		this.#container.prepend(item);
 	}
-
-	// renderItems() {
-	// 	this.#clear();
-	// 	this.#renderedItems.forEach(item => this.#renderer(item));
-	// }
-
-	// addItem() {
-	// 	this.#container.prepend(item.item)
-	// }
 }
