@@ -19,20 +19,20 @@ import {
 
 const handleAddButton = function () {
   popupAdd.openPopup();
-  addFormValidator.resetValidation();
+  validatorFormAdd.resetValidation();
 }
 
 const handleEditButton = function () {
   popupEdit.openPopup();
   popupEdit.setInputValues(userInfo.getUserInfo());
-  editFormValidator.resetValidation();
+  validatorFormEdit.resetValidation();
 }
 
 const createCard = function (inputValues) {
   return new Card({
     name: inputValues.name,
     link: inputValues.link,
-  }, cardsTemplate, (name, link) => {
+  }, '#cardtemplate', (name, link) => {
     popupImage.openPopup(name, link);
   })
     .generateCard();
@@ -60,11 +60,11 @@ const popupEdit = new PopupWithForm('.popup_type_edit', (inputValues => {
   userInfo.setUserInfo(inputValues.name, inputValues.job);
 }));
 
-const addFormValidator = createValidator(popupAdd.getForm());
-const editFormValidator = createValidator(popupEdit.getForm());
+const validatorFormAdd = createValidator(popupAdd.getForm());
+const validatorFormEdit = createValidator(popupEdit.getForm());
 
-addFormValidator.enableValidation();
-editFormValidator.enableValidation();
+validatorFormAdd.enableValidation();
+validatorFormEdit.enableValidation();
 
 cardList.renderItems();
 

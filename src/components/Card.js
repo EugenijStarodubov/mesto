@@ -7,8 +7,8 @@ export class Card {
   #cardImage;
   #handleCardClick;
 
-  constructor(cardsData, cardsTemplate, handleCardClick) {
-    this.#cardsTemplate = cardsTemplate;
+  constructor(cardsData, cardsIdSelector, handleCardClick) {
+    this.#cardsTemplate = document.querySelector(cardsIdSelector);
     this.#name = cardsData.name;
     this.#link = cardsData.link;
     this.#handleCardClick = handleCardClick;
