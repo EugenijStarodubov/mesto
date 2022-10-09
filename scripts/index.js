@@ -11,81 +11,68 @@ import { initialCards } from "./data/cardsData.js";
 
 const cardsTemplate = document.querySelector('#cardtemplate');
 const cardsContainer = document.querySelector('.places__items')
-const profileItem = document.querySelector('.profile__card');
-const popupContainer = document.querySelector('.page__popup-wrapper');
-const profileName = document.querySelector('.profile__title');
-const profileJob = document.querySelector('.profile__subtitle');
-const popups = document.querySelectorAll('.popup');
-// const popupEdit = document.querySelector('.popup_type_edit');
-//const popupAdd = document.querySelector('.popup_type_add');
-const popupImageSelector = document.querySelector('.popup_type_image');
-const imageSelector = popupImageSelector.querySelector('.popup__image');
-const nameInput = document.querySelector('.popup__input_field_name');
-const jobInput = document.querySelector('.popup__input_field_job');
-const nameCardInput = document.querySelector('.popup__input_field_card-name');
-const formAdd = document.querySelector('.popup__form_type_add');
-const formEdit = document.querySelector('.popup__form_type_edit');
-const formsList = Array.from(document.querySelectorAll('.popup__form'));
-const forms = new Map();
 const userSelectorsData = {
 	userName: '.profile__title',
 	userInfo: '.profile__subtitle'
 }
 
-const handleCardClick = function (name, link) {
-	popupImage.openPopup(name, link);
-}
-
 const handleAddButton = function (evt) {
 	popupAdd.openPopup();
-	// formAddValidator.resetValidation();
+	addFormValidator.resetValidation();
 }
 
 const handleEditButton = function (evt) {
 	popupEdit.openPopup();
-	// formAddValidator.resetValidation();
+	popupEdit.setInputValues(userInfo.getUserInfo())
+	editFormValidator.resetValidation();
 }
 
 const createCard = function (inputValues) {
-	console.log(inputValues)
+
 	return new Card({
 		name: inputValues.name,
 		link: inputValues.link
-	}, cardsTemplate, handleCardClick)
+	}, cardsTemplate, (name, link) => {
+		popupImage.openPopup(name, link);
+	})
 		.generateCard();
 }
 
-const handleFormSubmit = function (inputValues) {
-	cardList.addItem(createCard(inputValues));
+// const handleFormSubmit = function (inputValues) {
+// 	cardList.addItem(createCard(inputValues));
 
-}
+// }
 const cardList = new Section({
 	items: initialCards,
 	renderer: (item) => cardList.addItem(createCard(item))
 }, cardsContainer);
-
-
-const popupImage = new PopupWithImage('.popup_type_image', '.popup__image');
-
-
-cardList.renderItems();
-
-const userInfo = new UserInfo(userSelectorsData)
-
-const popupAdd = new PopupWithForm('.popup_type_add', (inputValues => {
-	cardList.addItem(createCard(inputValues));
-}));
-const popupEdit = new PopupWithForm('.popup_type_edit', (inputValues => {
-	userInfo.setUserInfo(inputValues.name, inputValues.job)
-}))
-
-
 
 const createValidator = function (form) {
 	const formValidator = new FormValidator(config, form);
 	return formValidator;
 };
 
+const popupImage = new PopupWithImage('.popup_type_image', '.popup__image');
+
+const userInfo = new UserInfo(userSelectorsData)
+
+const popupAdd = new PopupWithForm('.popup_type_add', (inputValues => {
+	cardList.addItem(createCard(inputValues));
+}));
+
+const popupEdit = new PopupWithForm('.popup_type_edit', (inputValues => {
+	userInfo.setUserInfo(inputValues.name, inputValues.job)
+}))
+
+const addFormValidator = createValidator(popupAdd.getForm());
+const editFormValidator = createValidator(popupEdit.getForm());
+
+addFormValidator.enableValidation();
+editFormValidator.enableValidation();
+
+cardList.renderItems();
+
+popupImage.setEventListeners();
 popupAdd.setEventListeners();
 popupEdit.setEventListeners();
 
@@ -172,14 +159,14 @@ document.querySelector('.profile__edit-button').addEventListener('click', handle
 
 
 
-// // const setFormsValidaton = function (formsList) {
-// // 	formsList.forEach(form => {
-// // 		forms.set(form, createValidator(form));
-// // 		forms.get(form).enableValidation();
-// // 	});
-// // };
+// const setFormsValidaton = function (formsList) {
+// 	formsList.forEach(form => {
+// 		forms.set(form, createValidator(form));
+// 		forms.get(form).enableValidation();
+// 	});
+// };
 
-// // setFormsValidaton(formsList);
+// setFormsValidaton(formsList);
 
 // profileItem.addEventListener('click', (evt) => {
 // 	if (evt.target.classList.contains('profile__edit-button')) {

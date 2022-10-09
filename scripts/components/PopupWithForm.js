@@ -6,7 +6,7 @@ export default class PopupWithForm extends Popup {
 	#inputList
 	popup
 	#form
-
+	data
 	handleInputs
 	#setPlaceholders
 
@@ -20,12 +20,30 @@ export default class PopupWithForm extends Popup {
 	}
 
 	#getInputValues() {
-		return this.#inputList.reduce((inputValues, input) => {
-			inputValues[input.name] = input.value;
-			return inputValues
+		return this.#inputList.reduce((inputValue, input) => {
+			inputValue[input.name] = input.value;
+			return inputValue
 		}, {});
 	}
 
+	setInputValues(data) {
+		this.#inputList.forEach(input => {
+			if (data[input.name]) {
+				input.value = data[input.name]
+			}
+		})
+
+
+		// console.log(data)
+		// this.#inputList.value = data.name;
+		// this.#getInputValues().job = data.job;
+		// data.name = this.#getInputValues().name;
+		// data.job = this.#getInputValues().job;
+	}
+
+	getForm() {
+		return this.#form
+	}
 
 	setEventListeners() {
 

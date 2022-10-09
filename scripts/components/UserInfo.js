@@ -22,7 +22,7 @@ export default class UserInfo {
 	getUserInfo() {
 		return {
 			name: this.nameSelector.textContent,
-			info: this.infoSelector.textContent,
+			job: this.infoSelector.textContent,
 		}
 	}
 
