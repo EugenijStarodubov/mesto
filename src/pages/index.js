@@ -1,5 +1,7 @@
 import './index.css'
 
+import Api from "../components/Api.js";
+
 import { Card } from "../components/Card.js";
 import Section from "../components/Section.js";
 
@@ -12,6 +14,7 @@ import { initialCards } from "../utils/data.js";
 
 import {
   config,
+
   cardsTemplate,
   cardsContainer,
   userSelectorsData
@@ -37,6 +40,22 @@ const createCard = function (inputValues) {
   })
     .generateCard();
 }
+
+// const renderUserData = function () {
+//   const userData = api.getUserData();
+
+//   return userData.name;
+// }
+
+const api = new Api({
+  url: 'https://nomoreparties.co/v1/cohort-52/users/me',
+  headers: {
+    authorization: '79dfd97e-4c73-4c37-a7d5-b5e09710f5c9',
+    "Content-Type": "application/json"
+  }
+});
+
+api.renderRequest()
 
 const cardList = new Section({
   items: initialCards,

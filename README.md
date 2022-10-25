@@ -39,7 +39,7 @@
 
 ## **Проект выложен на ресурс GitHub:**
 
-- [Место](https://eugenijstarodubov.github.io/mesto/)
+- [Место](https://eugenijstarodubov.github.io/mesto)
 
 ### Автор
 
