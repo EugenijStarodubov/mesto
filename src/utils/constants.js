@@ -13,5 +13,6 @@ export const cardsTemplate = document.querySelector('#cardtemplate');
 export const cardsContainer = document.querySelector('.places__items')
 export const userSelectorsData = {
   userName: '.profile__title',
-  userInfo: '.profile__subtitle'
+  userInfo: '.profile__subtitle',
+  avatar: '.profile__avatar'
 }
