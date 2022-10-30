@@ -42,9 +42,11 @@ const createCard = function (values) {
       ownerId: values.owner._id,
       id: values._id,
     },
-    '#cardtemplate', (values) => {
+    '#cardtemplate',
+
+    (values) => {
       popupImage.openPopup(values.name, values.link);
-    })
+    }, api)
     .generateCard();
 }
 

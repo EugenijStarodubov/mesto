@@ -58,7 +58,7 @@ export default class Api {
   }
 
   setLikes(id) {
-    return this.#renderRequest("cards/${id}/likes", 'PUT');
+    return this.#renderRequest(`cards/${id}/likes`, 'PUT');
   }
 
   deleteCard(id) {
