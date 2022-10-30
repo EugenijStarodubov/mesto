@@ -32,26 +32,24 @@ const handleEditButton = function () {
   validatorFormEdit.resetValidation();
 }
 
-const createCard = function (inputValues) {
+const createCard = function (values) {
 
-  return new Card({
-    name: inputValues.name,
-    link: inputValues.link,
-  }, '#cardtemplate', (name, link) => {
-    popupImage.openPopup(name, link);
-  })
+  return new Card(
+    {
+      name: values.name,
+      link: values.link,
+      likes: values.likes,
+      ownerId: values.owner._id,
+      id: values._id,
+    },
+    '#cardtemplate', (values) => {
+      popupImage.openPopup(values.name, values.link);
+    })
     .generateCard();
 }
 
 
-// .then(data => console.log(data))
-// .catch(err => console.error(err.message))
 
-// const renderUserData = function () {
-//   const userData = api.getUserData();
-
-//   return userData.name;
-// }
 
 const api = new Api({
   url: 'https://nomoreparties.co/v1/cohort-52/',
@@ -79,30 +77,44 @@ const api = new Api({
 //   };
 // }).catch(err => console.error(err.message))
 
-api.getUser()
-  .then(userData => {
-    userInfo.setUserInfo(userData.name, userData.about)
 
-  });
 
-api.getCards()
-  .then(cardsData => {
+// api.getUser()
+//   .then(userData => {
+//     userInfo.setUserInfo(userData.name, userData.about)
 
-    const cardList = new Section({
-      items: cardsData,
-      renderer: (item) => cardList.addItem(createCard(item))
-    }, cardsContainer);
-    cardList.renderItems();
-  });
+//   });
 
 
 
-//  cardList = new Section({
-//   items: initialCards,
-//   renderer: (item) => cardList.addItem(createCard(item))
-// }, cardsContainer);
+const cardList = new Section({
+  renderer: (cardData) => {
+
+    const card = createCard(cardData);
+    cardList.addItem(card)
+  }, cardsContainer
+});
 
 
+
+
+
+Promise.all([api.getUser(), api.getCards()])
+  .then(([userData, cardsData]) => {
+    userInfo.setUserInfo(userData.name, userData.about);
+    cardList.renderItems(cardsData);
+  })
+  .catch(err => console.log(err.message));
+
+// api.getCards()
+//   .then(cardsData => {
+
+//     const cardList = new Section({
+//       items: cardsData,
+//       renderer: (item) => cardList.addItem(createCard(item))
+//     }, cardsContainer);
+//     cardList.renderItems();
+//   });
 
 const createValidator = function (form) {
   const formValidator = new FormValidator(config, form);
@@ -116,12 +128,18 @@ const userInfo = new UserInfo(userSelectorsData);
 
 
 
+// const popupAdd = new PopupWithForm('.popup_type_add', (inputValues => {
+//   cardList.addItem(createCard(inputValues));
+// }));
+
 const popupAdd = new PopupWithForm('.popup_type_add', (inputValues => {
-  cardList.addItem(createCard(inputValues));
+  api.addCard(inputValues)
+    .then(cardData => cardList.addItem(createCard(cardData)))
+    .catch(err => console.log(err.message));
 }));
 
 const popupEdit = new PopupWithForm('.popup_type_edit', (inputValues) => {
-  api.createUser(inputValues)
+  api.updateUser(inputValues)
     .then(userData => userInfo.setUserInfo(userData.name, userData.about))
 });
 

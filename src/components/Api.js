@@ -26,10 +26,10 @@ export default class Api {
 
 
 
-    console.log(options.body)
+
 
     const response = await fetch(this.#url + path, options);
-    console.log(response)
+
     const json = await response.json();
 
     if (response.ok) {
@@ -48,9 +48,17 @@ export default class Api {
     return this.#renderRequest("cards");
   }
 
-  createUser(inputValues) {
+  updateUser(inputValues) {
 
     return this.#renderRequest('users/me', 'PATCH', inputValues);
+  }
+
+  addCard(inputValues) {
+    return this.#renderRequest("cards", 'POST', inputValues);
+  }
+
+  setLikes(id) {
+    return this.#renderRequest("cards/${id}/likes", 'PUT');
   }
 
   deleteCard(id) {
