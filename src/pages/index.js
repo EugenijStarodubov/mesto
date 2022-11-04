@@ -7,6 +7,8 @@ import Section from "../components/Section.js";
 
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithConfirm from '../components/PopupWithConfirm.js';
+
 import UserInfo from "../components/UserInfo.js";
 import { FormValidator } from "../components/FormValidator.js";
 
@@ -34,7 +36,7 @@ const handleEditButton = function () {
 
 const createCard = function (values) {
 
-  return new Card(
+  const card = new Card(
     {
       name: values.name,
       link: values.link,
@@ -43,11 +45,16 @@ const createCard = function (values) {
       id: values._id,
     },
     '#cardtemplate',
+    popupImage.openPopup.bind(popupImage)
+    , () => {
+      popupConfirm.openPopup({
+        id: values._id,
+        handleDelete: card.deleteCard.bind(card),
+      });
+    }
+  );
 
-    (values) => {
-      popupImage.openPopup(values.name, values.link);
-    }, api)
-    .generateCard();
+  return card.generateCard();
 }
 
 
@@ -62,44 +69,11 @@ const api = new Api({
 });
 
 
-
-
-// api.getUser()
-// // .then(data => console.log(data))
-// // .catch(err => console.error(err.message))
-// // api.getCards()
-// api.getUser().then(data => {
-//   { console.log(data, data.name, data.about, data._id) };
-// }).catch(err => console.error(err.message))
-
-// api.getCards().then(data => {
-//   {
-//     createCard(data);
-
-//   };
-// }).catch(err => console.error(err.message))
-
-
-
-// api.getUser()
-//   .then(userData => {
-//     userInfo.setUserInfo(userData.name, userData.about)
-
-//   });
-
-
-
 const cardList = new Section({
   renderer: (cardData) => {
-
-    const card = createCard(cardData);
-    cardList.addItem(card)
+    cardList.addItem(createCard(cardData))
   }, cardsContainer
 });
-
-
-
-
 
 Promise.all([api.getUser(), api.getCards()])
   .then(([userData, cardsData]) => {
@@ -107,16 +81,6 @@ Promise.all([api.getUser(), api.getCards()])
     cardList.renderItems(cardsData);
   })
   .catch(err => console.log(err.message));
-
-// api.getCards()
-//   .then(cardsData => {
-
-//     const cardList = new Section({
-//       items: cardsData,
-//       renderer: (item) => cardList.addItem(createCard(item))
-//     }, cardsContainer);
-//     cardList.renderItems();
-//   });
 
 const createValidator = function (form) {
   const formValidator = new FormValidator(config, form);
@@ -126,13 +90,6 @@ const createValidator = function (form) {
 const popupImage = new PopupWithImage('.popup_type_image', '.popup__image');
 
 const userInfo = new UserInfo(userSelectorsData);
-
-
-
-
-// const popupAdd = new PopupWithForm('.popup_type_add', (inputValues => {
-//   cardList.addItem(createCard(inputValues));
-// }));
 
 const popupAdd = new PopupWithForm('.popup_type_add', (inputValues => {
   api.addCard(inputValues)
@@ -145,17 +102,24 @@ const popupEdit = new PopupWithForm('.popup_type_edit', (inputValues) => {
     .then(userData => userInfo.setUserInfo(userData.name, userData.about))
 });
 
+const popupConfirm = new PopupWithConfirm('.popup_type_confirm',
+  ({ id, handleDelete }) => {
+    api.deleteCard(id)
+      .then(() => {
+        handleDelete();
+      })
+  });
+
 const validatorFormAdd = createValidator(popupAdd.getForm());
 const validatorFormEdit = createValidator(popupEdit.getForm());
 
 validatorFormAdd.enableValidation();
 validatorFormEdit.enableValidation();
 
-// cardList.renderItems();
-
 popupImage.setEventListeners();
 popupAdd.setEventListeners();
 popupEdit.setEventListeners();
+popupConfirm.setEventListeners();
 
 document.querySelector('.profile__add-button').addEventListener('click', handleAddButton);
 document.querySelector('.profile__edit-button').addEventListener('click', handleEditButton);

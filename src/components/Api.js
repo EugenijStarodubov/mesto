@@ -23,13 +23,7 @@ export default class Api {
       (typeof body === "string") ? options.body = body
         : options.body = JSON.stringify(body);
     }
-
-
-
-
-
     const response = await fetch(this.#url + path, options);
-
     const json = await response.json();
 
     if (response.ok) {
@@ -62,6 +56,6 @@ export default class Api {
   }
 
   deleteCard(id) {
-    return this.#renderRequest(`user/me/${id}`, "DELETE");
+    return this.#renderRequest(`cards/${id}`, "DELETE");
   }
 }
