@@ -14,6 +14,7 @@ export default class PopupWithConfirm extends Popup {
     this.#popup = document.querySelector(popupSelector);
     this.#handleConfirm = handleConfirm;
     this.#buttonConfirm = this.#popup.querySelector('.popup__button_type_confirm')
+    this.isLoading = false;
   }
 
   openPopup(data) {
@@ -29,10 +30,13 @@ export default class PopupWithConfirm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
+
     this.#buttonConfirm.addEventListener('click', () => {
+      console.log('загрузка')
+
       this.#handleConfirm(this.#data)
         .then(() => {
-          this.#data.handleDelete().bind(this)
+          console.log('ok')
           this.closePopup()
         })
         .catch(err => console.log(err.message))

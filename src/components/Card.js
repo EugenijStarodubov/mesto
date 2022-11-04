@@ -12,7 +12,7 @@ export class Card {
   #id
   #deleteButton
 
-  constructor(cardsData, cardsIdSelector, handleCardClick, handleDeleteClick) {
+  constructor(cardsData, cardsIdSelector, userId, handleCardClick, handleDeleteClick) {
 
     this.#cardsTemplate = document.querySelector(cardsIdSelector);
     this.#name = cardsData.name;
@@ -22,6 +22,8 @@ export class Card {
     this.#handleCardClick = handleCardClick;
     this.#handleDeleteClick = handleDeleteClick;
     this.#likesSet = new Set(cardsData.likes);
+    this.userId = userId;
+
 
   }
 
@@ -29,6 +31,7 @@ export class Card {
     return this.#cardsTemplate
       .content.querySelector('.places__item').cloneNode(true);
   }
+
 
   #handleLikeClick(evt) {
     evt.target.classList.toggle('places__like-button_active');
@@ -75,11 +78,13 @@ export class Card {
     this.#setLikeCounter();
     this.#setEventListeners();
 
+    (this.userId !== this.#ownerId) && this.#deleteButton.remove();
+
     return this.#cardItem;
   }
 
   deleteCard() {
-    console.log(this.#cardItem)
+
     this.#cardItem.remove();
     this.#cardItem = null;
 

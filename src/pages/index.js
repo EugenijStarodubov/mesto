@@ -45,13 +45,15 @@ const createCard = function (values) {
       id: values._id,
     },
     '#cardtemplate',
+    userInfo.userId,
     popupImage.openPopup.bind(popupImage)
     , () => {
       popupConfirm.openPopup({
         id: values._id,
         handleDelete: card.deleteCard.bind(card),
       });
-    }
+    },
+
   );
 
   return card.generateCard();
@@ -77,7 +79,7 @@ const cardList = new Section({
 
 Promise.all([api.getUser(), api.getCards()])
   .then(([userData, cardsData]) => {
-    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setUserInfo(userData.name, userData.about, userData._id);
     cardList.renderItems(cardsData);
   })
   .catch(err => console.log(err.message));
@@ -104,7 +106,7 @@ const popupEdit = new PopupWithForm('.popup_type_edit', (inputValues) => {
 
 const popupConfirm = new PopupWithConfirm('.popup_type_confirm',
   ({ id, handleDelete }) => {
-    api.deleteCard(id)
+    return api.deleteCard(id)
       .then(() => {
         handleDelete();
       })
