@@ -6,25 +6,30 @@ export class Card {
   #link;
   #cardImage;
   #handleCardClick;
-  #handleDeleteClick
+  #handleDeleteClick;
   #likesSet;
-  #ownerId
+  #ownerId;
+  #deleteButton;
+  #handleLikeClick;
+  #isLiked;
+  #likeButton;
   #id
-  #deleteButton
 
-  constructor(cardsData, cardsIdSelector, userId, handleCardClick, handleDeleteClick) {
+  constructor(cardsData, cardsIdSelector, userId, handleCardClick, handleDeleteClick, handleLikeClick) {
 
     this.#cardsTemplate = document.querySelector(cardsIdSelector);
     this.#name = cardsData.name;
     this.#link = cardsData.link;
-    this.#id = cardsData.id;
+
     this.#ownerId = cardsData.ownerId;
-    this.#handleCardClick = handleCardClick;
-    this.#handleDeleteClick = handleDeleteClick;
-    this.#likesSet = new Set(cardsData.likes);
     this.userId = userId;
 
+    this.#handleCardClick = handleCardClick;
+    this.#handleDeleteClick = handleDeleteClick;
+    this.#handleLikeClick = handleLikeClick;
 
+    this.#likesSet = new Set(cardsData.likes);
+    this.#isLiked = this.#likesSet.has(this.userId);
   }
 
   #getTemplate() {
@@ -33,18 +38,32 @@ export class Card {
   }
 
 
-  #handleLikeClick(evt) {
-    evt.target.classList.toggle('places__like-button_active');
+  #handleLike() {
+    this.#handleLikeClick(this.#isLiked)
   }
 
   #setLikeCounter() {
     this.#cardItem.querySelector('.places__likes-counter').textContent = this.#likesSet.size;
-
   }
 
-  checkLikes() {
-    return (this.#likesSet.has(this.#ownerId)) ? true : false;
+  setLike(id) {
+    this.#likeButton.classList.add('places__like-button_active');
+
+    this.#likesSet.add(id);
+    this.#setLikeCounter();
+
+    this.#isLiked = true;
   }
+
+  removeLike(id) {
+    this.#likeButton.classList.remove('places__like-button_active');
+
+    this.#likesSet.delete(id);
+    this.#setLikeCounter();
+
+    this.#isLiked = false;
+  }
+
 
   #deleteHandler() {
     this.#handleDeleteClick();
@@ -52,15 +71,13 @@ export class Card {
 
   #setEventListeners() {
 
-    this.#cardItem
-      .querySelector('.places__like-button')
-      .addEventListener('click', this.#handleLikeClick.bind(this));
+    this.#likeButton
+      .addEventListener('click', this.#handleLike.bind(this));
 
     this.#deleteButton
       .addEventListener('click', this.#deleteHandler.bind(this));
 
-    this.#cardItem
-      .querySelector('.places__image')
+    this.#cardImage
       .addEventListener('click', () => {
         this.#handleCardClick(this.#name, this.#link);
       });
@@ -71,10 +88,13 @@ export class Card {
 
     this.#cardImage = this.#cardItem.querySelector('.places__image');
     this.#deleteButton = this.#cardItem.querySelector('.places__delete-button');
+    this.#likeButton = this.#cardItem.querySelector('.places__like-button');
 
     this.#cardItem.querySelector('.places__title').textContent = this.#name;
+
     this.#cardImage.src = this.#link;
     this.#cardImage.alt = this.#name;
+
     this.#setLikeCounter();
     this.#setEventListeners();
 
@@ -84,10 +104,8 @@ export class Card {
   }
 
   deleteCard() {
-
     this.#cardItem.remove();
     this.#cardItem = null;
-
   }
 }
 

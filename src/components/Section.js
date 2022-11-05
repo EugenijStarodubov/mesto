@@ -6,10 +6,8 @@ export default class Section {
 
   constructor({ renderer, cardsContainer }) {
 
-
     this.#renderer = renderer;
     this.#container = cardsContainer;
-
   }
 
   #clear() {

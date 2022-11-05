@@ -53,7 +53,17 @@ const createCard = function (values) {
         handleDelete: card.deleteCard.bind(card),
       });
     },
-
+    (isLiked) => {
+      if (isLiked) {
+        api.removeLike(values._id)
+          .then(data => card.removeLike(data.owner._id))
+          .catch(err => console.log(err.message))
+      } else {
+        api.setLike(values._id)
+          .then(data => card.setLike(data.owner._id))
+          .catch(err => console.log(err.message))
+      }
+    }
   );
 
   return card.generateCard();

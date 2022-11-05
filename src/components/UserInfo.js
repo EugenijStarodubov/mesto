@@ -5,10 +5,10 @@ export default class UserInfo {
   constructor(data) {
 
     this.#data = data;
+
     this.nameSelector = document.querySelector(this.#data.userName);
     this.infoSelector = document.querySelector(this.#data.userInfo);
     this.avatarSelector = document.querySelector(this.#data.avatar);
-
   }
 
   getUserInfo() {
@@ -25,7 +25,5 @@ export default class UserInfo {
     this.nameSelector.textContent = name;
     this.infoSelector.textContent = about;
     this.userId = id
-
-
   }
 }
