@@ -34,6 +34,12 @@ const handleEditButton = function () {
   validatorFormEdit.resetValidation();
 }
 
+const handleAvatar = function () {
+  popupEditAvatar.openPopup();
+  popupEditAvatar.setInputValues(userInfo.getUserInfo());
+  validatorFormAvatar.resetValidation();
+}
+
 const createCard = function (values) {
 
   const card = new Card(
@@ -114,6 +120,11 @@ const popupEdit = new PopupWithForm('.popup_type_edit', (inputValues) => {
     .then(userData => userInfo.setUserInfo(userData.name, userData.about))
 });
 
+const popupEditAvatar = new PopupWithForm('.popup_type_set-avatar', (inputValues) => {
+  api.setAvatar({ avatar: inputValues.avatar })
+    .then(userInfo.setAvatar(inputValues.avatar))
+})
+
 const popupConfirm = new PopupWithConfirm('.popup_type_confirm',
   ({ id, handleDelete }) => {
     return api.deleteCard(id)
@@ -124,15 +135,19 @@ const popupConfirm = new PopupWithConfirm('.popup_type_confirm',
 
 const validatorFormAdd = createValidator(popupAdd.getForm());
 const validatorFormEdit = createValidator(popupEdit.getForm());
+const validatorFormAvatar = createValidator(popupEditAvatar.getForm());
 
 validatorFormAdd.enableValidation();
 validatorFormEdit.enableValidation();
+validatorFormAvatar.enableValidation();
 
 popupImage.setEventListeners();
 popupAdd.setEventListeners();
 popupEdit.setEventListeners();
+popupEditAvatar.setEventListeners();
 popupConfirm.setEventListeners();
 
 document.querySelector('.profile__add-button').addEventListener('click', handleAddButton);
 document.querySelector('.profile__edit-button').addEventListener('click', handleEditButton);
+document.querySelector('.profile__avatar-container').addEventListener('click', handleAvatar);
 

@@ -31,7 +31,6 @@ export default class PopupWithForm extends Popup {
     this.#inputList.forEach(input => {
       if (data[input.name]) {
         input.value = data[input.name];
-
       }
     });
 

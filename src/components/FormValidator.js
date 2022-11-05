@@ -11,7 +11,6 @@ export class FormValidator {
 
   constructor(config, formElement) {
 
-
     this.#inactiveButtonClass = config.inactiveButtonClass;
     this.#inputErrorClass = config.inputErrorClass;
     this.#errorClass = config.errorClass;
@@ -20,6 +19,7 @@ export class FormValidator {
       this.#formElement.querySelectorAll(config.inputSelector)
     );
     this.#submitButton = this.#formElement.querySelector(config.submitButtonSelector);
+
   }
 
   #setButtonInactive() {
@@ -47,8 +47,10 @@ export class FormValidator {
   };
 
   #showInputError(input, errorMessage) {
+
     this.#errorElement = this.#formElement.querySelector(`#${input.id}-error`);
     input.classList.add(this.#inputErrorClass);
+
     this.#errorElement.textContent = errorMessage;
     this.#errorElement.classList.add(this.#errorClass);
   };
@@ -61,6 +63,7 @@ export class FormValidator {
   };
 
   #checkValidity(input) {
+
     if (!input.validity.valid) {
       this.#showInputError(input, input.validationMessage);
     } else {

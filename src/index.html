@@ -16,7 +16,10 @@
     <main class="content page__content">
       <article class="profile">
         <div class="profile__card">
-          <img src="<%=require('./images/profile/Avatar.jpg')%>" alt="Путешественник" class="avatar profile__avatar" />
+          <div class="profile__avatar-container">
+            <img src="<%=require('./images/profile/Avatar.jpg')%>" alt="Путешественник"
+              class="avatar profile__avatar" />
+          </div>
           <div class="profile__content-wrapper">
             <div class="profile__title-wrapper">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -78,6 +81,24 @@
           <button type="submit" class="button popup__button popup__button_type_add" aria-label="Создать"
             name="add-form-button">
             Создать
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup_type_set-avatar">
+      <div class="popup__modal-window">
+        <button class="button popup__close-button" type="button" aria-label="Закрыть"></button>
+        <form action="#" class="popup__form popup__form_type_set-avatar" method="POST" name="set-avatar"
+          id="form-avatar" novalidate>
+          <h2 class="title popup__title">Обновить аватар</h2>
+          <label class="popup__form-field">
+            <input id="avatar" type="url" placeholder="Ссылка на аватар"
+              class="popup__input popup__input_field_avatar-link" name="avatar" required />
+            <span id="avatar-error" class="popup__error"></span>
+          </label>
+          <button type="submit" class="button popup__button popup__button_type_set-avatar" aria-label="Сохранить"
+            name="set-avatar-form-button">
+            Сохранить
           </button>
         </form>
       </div>

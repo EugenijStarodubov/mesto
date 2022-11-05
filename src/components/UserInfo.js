@@ -9,6 +9,7 @@ export default class UserInfo {
     this.nameSelector = document.querySelector(this.#data.userName);
     this.infoSelector = document.querySelector(this.#data.userInfo);
     this.avatarSelector = document.querySelector(this.#data.avatar);
+    this.avatarSelector.textContent = this.avatarSelector.src;
   }
 
   getUserInfo() {
@@ -17,6 +18,7 @@ export default class UserInfo {
       name: this.nameSelector.textContent,
       about: this.infoSelector.textContent,
       userId: this.userId,
+
     }
   }
 
@@ -25,5 +27,14 @@ export default class UserInfo {
     this.nameSelector.textContent = name;
     this.infoSelector.textContent = about;
     this.userId = id
+
+  }
+
+
+
+  setAvatar(url) {
+
+    this.avatarSelector.src = url;
+
   }
 }

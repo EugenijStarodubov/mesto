@@ -1,18 +1,13 @@
 export default class Api {
 
   #url;
-  #header;
   #configApi;
-  #path
-  #body
 
   constructor({ url, ...configApi }) {
 
     this.#url = url;
     this.#configApi = configApi;
-
   }
-
 
   async #renderRequest(path, method = "GET", body) {
 
@@ -31,7 +26,6 @@ export default class Api {
     }
 
     throw new Error(json.message);
-
   }
 
   getUser() {
@@ -61,5 +55,10 @@ export default class Api {
 
   deleteCard(id) {
     return this.#renderRequest(`cards/${id}`, "DELETE");
+  }
+
+  setAvatar(data) {
+    console.log(data)
+    return this.#renderRequest('users/me/avatar', 'PATCH', data);
   }
 }
