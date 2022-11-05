@@ -118,10 +118,7 @@ const popupEditAvatar = new PopupWithForm('.popup_type_set-avatar', (inputValues
 const popupConfirm = new PopupWithConfirm('.popup_type_confirm',
   ({ id, handleDelete }) => {
     return api.deleteCard(id)
-      .then(() => {
-        handleDelete();
-      })
-      .catch(err => console.log(err.message));
+      .then(() => handleDelete());
   });
 
 const validatorFormAdd = createValidator(popupAdd.getForm());
