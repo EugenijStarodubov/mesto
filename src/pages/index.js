@@ -86,8 +86,9 @@ const cardList = new Section({
 
 Promise.all([api.getUser(), api.getCards()])
   .then(([userData, cardsData]) => {
-    userInfo.setUserInfo(userData.name, userData.about);
-    userInfo.setUserId(userData._id)
+    userInfo.setUserInfo(userData);
+    userInfo.setUserId(userData._id);
+
     cardList.renderItems(cardsData);
   })
   .catch(err => console.log(err.message));

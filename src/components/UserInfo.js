@@ -29,10 +29,11 @@ export default class UserInfo {
     return this.#userId;
   }
 
-  setUserInfo(name, about) {
+  setUserInfo(data) {
 
-    this.nameSelector.textContent = name;
-    this.infoSelector.textContent = about;
+    this.nameSelector.textContent = data.name;
+    this.infoSelector.textContent = data.about;
+    this.avatarSelector.src = data.avatar;
   }
 
   setAvatar(url) {
