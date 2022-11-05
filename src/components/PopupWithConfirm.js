@@ -27,12 +27,6 @@ export default class PopupWithConfirm extends Popup {
     this.#data = data;
   }
 
-  closePopup() {
-
-    super.closePopup();
-  }
-
-
   setEventListeners() {
 
     super.setEventListeners();

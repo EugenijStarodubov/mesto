@@ -14,7 +14,7 @@ export default class Popup {
   closePopup() {
     if (this.#popup) {
       this.#popup.classList.remove('popup_opened');
-      document.removeEventListener('keydown', this.handleEscClosePopup);
+      document.removeEventListener('keydown', this.#handleEscClosePopup);
     }
   }
 

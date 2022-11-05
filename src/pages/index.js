@@ -102,7 +102,7 @@ const popupAdd = new PopupWithForm('.popup_type_add', (inputValues => api.addCar
 
 const popupEdit = new PopupWithForm('.popup_type_edit', (inputValues =>
   api.updateUser(inputValues)
-    .then(userData => userInfo.setUserInfo(userData.name, userData.about))
+    .then(userData => userInfo.setUserInfo(userData))
 ));
 
 const popupEditAvatar = new PopupWithForm('.popup_type_set-avatar', (inputValues =>
