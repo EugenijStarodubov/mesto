@@ -58,7 +58,6 @@ export default class Api {
   }
 
   setAvatar(data) {
-    console.log(data)
     return this.#renderRequest('users/me/avatar', 'PATCH', data);
   }
 }

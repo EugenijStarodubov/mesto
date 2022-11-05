@@ -13,7 +13,6 @@ export class Card {
   #handleLikeClick;
   #isLiked;
   #likeButton;
-  #id
 
   constructor(cardsData, cardsIdSelector, userId, handleCardClick, handleDeleteClick, handleLikeClick) {
 
@@ -64,7 +63,6 @@ export class Card {
     this.#isLiked = false;
   }
 
-
   #deleteHandler() {
     this.#handleDeleteClick();
   }
@@ -98,7 +96,9 @@ export class Card {
     this.#setLikeCounter();
     this.#setEventListeners();
 
-    (this.userId !== this.#ownerId) && this.#deleteButton.remove();
+    if (this.userId !== this.#ownerId) {
+      this.#deleteButton.remove();
+    }
 
     return this.#cardItem;
   }

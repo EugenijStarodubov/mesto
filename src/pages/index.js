@@ -1,4 +1,4 @@
-import './index.css'
+import './index.css';
 
 import Api from "../components/Api.js";
 
@@ -12,16 +12,11 @@ import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import UserInfo from "../components/UserInfo.js";
 import { FormValidator } from "../components/FormValidator.js";
 
-// import { initialCards } from "../utils/data.js";
-
 import {
   config,
-
-  cardsTemplate,
   cardsContainer,
   userSelectorsData
 } from "../utils/constants.js";
-
 
 const handleAddButton = function () {
   popupAdd.openPopup();
@@ -51,9 +46,8 @@ const createCard = function (values) {
       id: values._id,
     },
     '#cardtemplate',
-    userInfo.userId,
-    popupImage.openPopup.bind(popupImage)
-    , () => {
+    userInfo.getUserId(),
+    popupImage.openPopup.bind(popupImage), () => {
       popupConfirm.openPopup({
         id: values._id,
         handleDelete: card.deleteCard.bind(card),
@@ -63,20 +57,17 @@ const createCard = function (values) {
       if (isLiked) {
         api.removeLike(values._id)
           .then(data => card.removeLike(data.owner._id))
-          .catch(err => console.log(err.message))
+          .catch(err => console.log(err.message));
       } else {
         api.setLike(values._id)
           .then(data => card.setLike(data.owner._id))
-          .catch(err => console.log(err.message))
+          .catch(err => console.log(err.message));
       }
     }
   );
 
   return card.generateCard();
 }
-
-
-
 
 const api = new Api({
   url: 'https://nomoreparties.co/v1/cohort-52/',
@@ -95,7 +86,8 @@ const cardList = new Section({
 
 Promise.all([api.getUser(), api.getCards()])
   .then(([userData, cardsData]) => {
-    userInfo.setUserInfo(userData.name, userData.about, userData._id);
+    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setUserId(userData._id)
     cardList.renderItems(cardsData);
   })
   .catch(err => console.log(err.message));
@@ -123,6 +115,7 @@ const popupEdit = new PopupWithForm('.popup_type_edit', (inputValues) => {
 const popupEditAvatar = new PopupWithForm('.popup_type_set-avatar', (inputValues) => {
   api.setAvatar({ avatar: inputValues.avatar })
     .then(userInfo.setAvatar(inputValues.avatar))
+    .catch(err => console.log(err.message));
 })
 
 const popupConfirm = new PopupWithConfirm('.popup_type_confirm',
@@ -131,6 +124,7 @@ const popupConfirm = new PopupWithConfirm('.popup_type_confirm',
       .then(() => {
         handleDelete();
       })
+      .catch(err => console.log(err.message));
   });
 
 const validatorFormAdd = createValidator(popupAdd.getForm());
