@@ -7,28 +7,31 @@ export class Card {
   #cardImage;
   #handleCardClick;
   #handleDeleteClick;
-  #likesSet;
+  #likesCounter;
   #ownerId;
   #deleteButton;
   #handleLikeClick;
   #isLiked;
   #likeButton;
+  #likesAmount;
+  #userId;
 
   constructor(cardsData, cardsIdSelector, userId, handleCardClick, handleDeleteClick, handleLikeClick) {
 
     this.#cardsTemplate = document.querySelector(cardsIdSelector);
+
     this.#name = cardsData.name;
     this.#link = cardsData.link;
 
-    this.#ownerId = cardsData.ownerId;
-    this.userId = userId;
+    this.#ownerId = cardsData.owner._id;
+    this.#userId = userId;
+    this.#likesAmount = cardsData.likes.length;
 
     this.#handleCardClick = handleCardClick;
     this.#handleDeleteClick = handleDeleteClick;
     this.#handleLikeClick = handleLikeClick;
 
-    this.#likesSet = new Set(cardsData.likes);
-    this.#isLiked = this.#likesSet.has(this.userId);
+    this.#isLiked = !!cardsData.likes.find(user => user._id === this.#userId);
   }
 
   #getTemplate() {
@@ -36,31 +39,27 @@ export class Card {
       .content.querySelector('.places__item').cloneNode(true);
   }
 
-
   #handleLike() {
     this.#handleLikeClick(this.#isLiked)
   }
 
-  #setLikeCounter() {
-    this.#cardItem.querySelector('.places__likes-counter').textContent = this.#likesSet.size;
+  #setLikesAmount(likes) {
+
+    this.#likesCounter.textContent = likes;
   }
 
-  setLike(id) {
+  setLike(likes) {
+
     this.#likeButton.classList.add('places__like-button_active');
-
-    this.#likesSet.add(id);
-    this.#setLikeCounter();
-
     this.#isLiked = true;
+    this.#setLikesAmount(likes);
   }
 
-  removeLike(id) {
+  removeLike(likes) {
+
     this.#likeButton.classList.remove('places__like-button_active');
-
-    this.#likesSet.delete(id);
-    this.#setLikeCounter();
-
     this.#isLiked = false;
+    this.#setLikesAmount(likes);
   }
 
   #deleteHandler() {
@@ -87,18 +86,24 @@ export class Card {
     this.#cardImage = this.#cardItem.querySelector('.places__image');
     this.#deleteButton = this.#cardItem.querySelector('.places__delete-button');
     this.#likeButton = this.#cardItem.querySelector('.places__like-button');
+    this.#likesCounter = this.#cardItem.querySelector('.places__likes-counter');
 
     this.#cardItem.querySelector('.places__title').textContent = this.#name;
 
     this.#cardImage.src = this.#link;
     this.#cardImage.alt = this.#name;
 
-    this.#setLikeCounter();
     this.#setEventListeners();
 
-    if (this.userId !== this.#ownerId) {
+    if (this.#userId !== this.#ownerId) {
       this.#deleteButton.remove();
     }
+
+    if (this.#isLiked) {
+      this.setLike(this.#likesAmount);
+    }
+
+    this.#setLikesAmount(this.#likesAmount);
 
     return this.#cardItem;
   }

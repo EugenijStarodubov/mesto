@@ -50,7 +50,7 @@ export default class Api {
   }
 
   removeLike(id) {
-    return this.#renderRequest(`cards/${id}/likes`, 'PUT');
+    return this.#renderRequest(`cards/${id}/likes`, 'DELETE');
   }
 
   deleteCard(id) {

@@ -38,13 +38,7 @@ const handleAvatar = function () {
 const createCard = function (values) {
 
   const card = new Card(
-    {
-      name: values.name,
-      link: values.link,
-      likes: values.likes,
-      ownerId: values.owner._id,
-      id: values._id,
-    },
+    values,
     '#cardtemplate',
     userInfo.getUserId(),
     popupImage.openPopup.bind(popupImage), () => {
@@ -56,11 +50,11 @@ const createCard = function (values) {
     (isLiked) => {
       if (isLiked) {
         api.removeLike(values._id)
-          .then(data => card.removeLike(data.owner._id))
+          .then(data => card.removeLike(data.likes.length))
           .catch(err => console.log(err.message));
       } else {
         api.setLike(values._id)
-          .then(data => card.setLike(data.owner._id))
+          .then(data => card.setLike(data.likes.length))
           .catch(err => console.log(err.message));
       }
     }
@@ -89,7 +83,7 @@ Promise.all([api.getUser(), api.getCards()])
     userInfo.setUserInfo(userData);
     userInfo.setUserId(userData._id);
 
-    cardList.renderItems(cardsData);
+    cardList.renderItems(cardsData.reverse());
   })
   .catch(err => console.log(err.message));
 

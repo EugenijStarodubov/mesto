@@ -3,10 +3,12 @@ export default class Section {
   #renderer;
   #container;
 
+
   constructor({ renderer, cardsContainer }) {
 
     this.#renderer = renderer;
     this.#container = cardsContainer;
+
   }
 
   #clear() {
@@ -23,6 +25,6 @@ export default class Section {
   }
 
   addItems(items) {
-    items.forEach(item => this.addItem(item))
+    items.forEach(item => this.addItem(item));
   }
 }
