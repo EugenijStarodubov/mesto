@@ -1,6 +1,5 @@
 export class FormValidator {
 
-
   #inactiveButtonClass;
   #inputErrorClass;
   #errorClass;

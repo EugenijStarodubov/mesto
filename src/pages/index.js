@@ -101,22 +101,19 @@ const popupImage = new PopupWithImage('.popup_type_image', '.popup__image');
 
 const userInfo = new UserInfo(userSelectorsData);
 
-const popupAdd = new PopupWithForm('.popup_type_add', (inputValues => {
-  api.addCard(inputValues)
-    .then(cardData => cardList.addItem(createCard(cardData)))
-    .catch(err => console.log(err.message));
-}));
+const popupAdd = new PopupWithForm('.popup_type_add', (inputValues => api.addCard(inputValues)
+  .then(cardData => cardList.addItem(createCard(cardData)))
+));
 
-const popupEdit = new PopupWithForm('.popup_type_edit', (inputValues) => {
+const popupEdit = new PopupWithForm('.popup_type_edit', (inputValues =>
   api.updateUser(inputValues)
     .then(userData => userInfo.setUserInfo(userData.name, userData.about))
-});
+));
 
-const popupEditAvatar = new PopupWithForm('.popup_type_set-avatar', (inputValues) => {
+const popupEditAvatar = new PopupWithForm('.popup_type_set-avatar', (inputValues =>
   api.setAvatar({ avatar: inputValues.avatar })
     .then(userInfo.setAvatar(inputValues.avatar))
-    .catch(err => console.log(err.message));
-})
+));
 
 const popupConfirm = new PopupWithConfirm('.popup_type_confirm',
   ({ id, handleDelete }) => {
