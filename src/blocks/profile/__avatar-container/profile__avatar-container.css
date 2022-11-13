@@ -7,6 +7,7 @@
   height: 100%;
 }
 
+
 .profile__avatar-container:hover::before {
   position: absolute;
   content: '';
@@ -17,4 +18,19 @@
   background-image: url('../../../images/edit-avatar.svg');
   background-repeat: no-repeat;
   z-index: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .profile__avatar-container {
+    max-width: 140px;
+    max-height: 140px;
+
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .profile__avatar-container {
+    max-width: 120px;
+    max-height: 120px;
+  }
 }
